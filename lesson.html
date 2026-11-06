@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#111d35">
+<title>KCS Academy · Interactive lesson preview</title>
+<style>
+:root{--ink:#18243b;--muted:#64748b;--navy:#101d34;--blue:#315ee8;--line:#e2e8f0;--bg:#f3f6fb;--soft:#eaf0ff;--success:#0d806b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:15px}button,textarea{font:inherit}button{cursor:pointer}.shell{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh}.sidebar{background:var(--navy);color:#dbe6fc;padding:29px 20px;display:flex;flex-direction:column;gap:28px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:white;font-weight:800;letter-spacing:.2px}.mark{height:36px;width:36px;border-radius:11px;background:#6c88ff;display:grid;place-items:center;color:white;font-weight:900}.caption{font-size:11px;text-transform:uppercase;letter-spacing:1.3px;color:#8ea5c5;font-weight:750;margin:0 0 12px}.nav-item{display:flex;align-items:center;gap:10px;padding:12px;border-radius:10px;color:#cbd6eb;text-decoration:none;font-size:14px;margin:4px 0}.nav-item.active{background:#233653;color:#fff}.nav-item.dim{opacity:.55}.dot{width:7px;height:7px;border-radius:50%;background:#8ca5c8}.active .dot{background:#92e0ce}.foot{margin-top:auto;border-top:1px solid #2b3b56;padding-top:18px;color:#aab9d1;font-size:12px;line-height:1.6}.page{padding:33px min(4vw,55px) 45px;max-width:1550px;width:100%;margin:0 auto}.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:28px}.breadcrumb{font-size:13px;color:var(--muted)}.tag{font-size:12px;color:#3656bc;background:#e9efff;border:1px solid #d7e1fe;padding:7px 11px;border-radius:99px;font-weight:650}h1{font-size:clamp(27px,3vw,39px);letter-spacing:-1.1px;margin:0 0 10px;line-height:1.16}.lead{color:var(--muted);line-height:1.6;max-width:790px;margin:0 0 24px}.content{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(320px,.9fr);gap:22px;align-items:start}.panel{background:white;border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 25px #1f35540a;overflow:hidden}.panel-header{display:flex;justify-content:space-between;align-items:center;padding:19px 22px;border-bottom:1px solid var(--line);gap:12px}.panel-header h2{font-size:16px;margin:0}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1.1px;font-weight:750;color:#62769c}.lesson{padding:26px 28px 24px}.step-index{font-size:12px;color:var(--blue);font-weight:750;margin-bottom:12px}.lesson h3{font-size:25px;letter-spacing:-.5px;margin:0 0 14px}.lesson p{line-height:1.75;color:#41506c;margin:0 0 14px}.diagram{background:linear-gradient(160deg,#f4f7ff,#edf4ff);border:1px solid #dfe7fc;border-radius:15px;padding:19px 12px;margin:23px 0}.flow{display:grid;grid-template-columns:1fr 23px 1fr 23px 1fr 23px 1fr;align-items:center;gap:4px}.flow-node{padding:14px 5px;text-align:center;font-size:13px;font-weight:750;border:1px solid #d4def5;background:white;border-radius:10px;color:#394c72}.flow-node.focus{color:#1743b2;border:2px solid #5b80f1;background:#e2ebff}.arr{text-align:center;color:#7295d5;font-weight:900}.node-sub{font-size:10px;color:#7d8cab;display:block;font-weight:500;margin-top:5px}.note{padding:14px 16px;border-left:3px solid var(--blue);background:#f5f8ff;color:#4e5e7b;line-height:1.6;font-size:13px;border-radius:0 10px 10px 0}.controls{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:23px}.count{font-size:12px;color:#8190a8}.primary{border:0;background:var(--blue);color:white;border-radius:11px;padding:12px 17px;font-weight:750}.primary:disabled{background:#b4c3dc;cursor:not-allowed}.secondary{border:1px solid #cfd9ee;background:white;color:#2e4679;border-radius:11px;padding:10px 13px;font-weight:650}.progress{height:5px;background:#e8eef8}.progress>div{height:5px;background:#4368f1;transition:width .3s ease}.chat{display:flex;flex-direction:column;height:640px;min-height:530px}.chat-headline{display:flex;align-items:center;gap:11px}.avatar{width:32px;height:32px;border-radius:10px;background:#e5edff;color:#315ee8;display:grid;place-items:center;font-weight:850}.status{font-size:11px;color:#75869f;margin-top:3px}.chatlog{flex:1;overflow-y:auto;padding:22px;display:flex;flex-direction:column;gap:14px;scroll-behavior:smooth}.bubble{max-width:93%;border-radius:14px 14px 14px 4px;background:#f1f5fd;color:#2f3d58;padding:12px 14px;font-size:13px;line-height:1.65;white-space:pre-wrap}.bubble.user{align-self:flex-end;background:#e7edff;border-radius:14px 14px 4px 14px;color:#26449b}.prompt{font-size:12px;color:#64748b;padding:9px 20px 0}.chat-form{padding:11px 17px 17px;display:flex;gap:9px;border-top:1px solid var(--line)}textarea{resize:none;flex:1;min-width:0;height:45px;border:1px solid #d9e1ee;border-radius:11px;padding:11px;color:#293b5b;outline:none;font-size:13px}textarea:focus{border-color:#7895f8}.send{background:#315ee8;color:white;border:0;border-radius:11px;padding:0 15px;font-weight:700}.disclaimer{font-size:12px;color:#8391a5;line-height:1.6;margin:17px 0 0}.pill{display:inline-flex;align-items:center;gap:6px;border-radius:20px;font-size:11px;padding:5px 9px;background:#eaf8f4;color:#117e66;font-weight:700}@media(max-width:1160px){.shell{grid-template-columns:190px minmax(0,1fr)}.content{grid-template-columns:minmax(0,1fr)}.chat{height:430px;min-height:430px}.page{padding:24px}}@media(max-width:680px){.shell{display:block}.sidebar{padding:14px 18px;display:block}.sidebar nav,.sidebar .foot,.sidebar .caption{display:none}.page{padding:19px 12px}.topbar{margin-bottom:20px}.panel-header{padding:16px}.lesson{padding:22px 16px}.flow{gap:2px}.flow-node{font-size:10px;padding:12px 1px}.node-sub{font-size:9px}.chat{height:470px}h1{font-size:29px}.lead{font-size:14px}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <a href="./" class="brand"><span class="mark">K</span><span>KCS Academy</span></a>
+    <div>
+      <div class="caption">Courses</div>
+      <nav aria-label="Course modules">
+        <a class="nav-item active" href="#"><span class="dot"></span> Webex Contact Center</a>
+        <span class="nav-item dim"><span class="dot"></span> Cisco Unified CM</span>
+        <span class="nav-item dim"><span class="dot"></span> Cisco UCCE</span>
+      </nav>
+    </div>
+    <div class="foot">Knowledge Club Slovakia<br>Interactive learning prototype</div>
+  </aside>
+  <main class="page">
+    <div class="topbar"><div class="breadcrumb">Courses / Webex Contact Center / Lesson 01</div><span class="tag">Interactive preview</span></div>
+    <h1>How a Call Reaches an Agent</h1>
+    <p class="lead">Learn the foundations of call routing with a guided lesson. Read the instructor's explanation, ask questions, and continue at your own pace.</p>
+    <div class="content">
+      <section class="panel" aria-label="Lesson">
+        <div class="panel-header"><h2>Lesson content</h2><span class="pill">● Guided lesson</span></div>
+        <div class="progress"><div id="progressFill" style="width:20%"></div></div>
+        <div class="lesson">
+          <div class="step-index" id="stepIndex">PART 1 OF 5</div>
+          <h3 id="lessonTitle">The incoming call</h3>
+          <div id="lessonText"></div>
+          <div class="diagram" aria-label="Call routing diagram"><div class="flow" id="callFlow">
+            <div class="flow-node" data-node="0">Customer<span class="node-sub">Caller</span></div><div class="arr">→</div>
+            <div class="flow-node" data-node="1">Entry Point<span class="node-sub">Call flow</span></div><div class="arr">→</div>
+            <div class="flow-node" data-node="2">Queue<span class="node-sub">Routing</span></div><div class="arr">→</div>
+            <div class="flow-node" data-node="3">Agent<span class="node-sub">Desktop</span></div>
+          </div></div>
+          <div class="note" id="lessonNote"></div>
+          <div class="controls"><span class="count" id="counter">1 / 5</span><button id="nextBtn" class="primary" type="button">Continue lesson →</button></div>
+        </div>
+      </section>
+      <section class="panel chat" aria-label="Instructor chat">
+        <div class="panel-header"><div class="chat-headline"><div class="avatar">AI</div><div><h2>Instructor</h2><div class="status">Scripted demonstration · Real AI not connected</div></div></div></div>
+        <div id="chatlog" class="chatlog" role="log" aria-live="polite"></div>
+        <div class="prompt">Ask about a queue, an agent, or a callback.</div>
+        <form class="chat-form" id="chatForm"><textarea id="chatInput" aria-label="Your question" placeholder="Type a question..." maxlength="700"></textarea><button class="send" type="submit">Send</button></form>
+      </section>
+    </div>
+    <p class="disclaimer"><strong>Prototype:</strong> This version demonstrates the lesson experience using prepared explanations and responses. It does not send your questions to an AI model or to a server. We will connect a real AI instructor in a later step.</p>
+  </main>
+</div>
+<script>
+"use strict";
+const stages = [
+  {title:"The incoming call",text:"<p>A customer dials the contact center phone number. The call enters Webex Contact Center through an <strong>Entry Point</strong> associated with the incoming number.</p><p>The Entry Point determines which call flow will process this interaction. The flow can play prompts, gather information, and decide where to send the customer.</p>",note:"Key idea: an Entry Point is not the same thing as a queue. It is where the interaction first enters the configured flow.",focus:1,chat:"Welcome! I'll guide you through how an incoming call reaches an agent. You can ask a question at any time, or click Continue lesson."},
+  {title:"The flow makes a routing decision",text:"<p>The Flow Designer logic can ask the customer to select a language or department. Depending on the customer's choices, the flow selects a suitable destination.</p><p>For a typical voice interaction, a <strong>Queue Contact</strong> activity sends the call to a configured queue.</p>",note:"A flow controls the customer experience and can influence routing. It does not mean an agent has already been assigned.",focus:1,chat:"Now we are inside the flow. The next step is to place the interaction into an appropriate queue."},
+  {title:"Waiting in the queue",text:"<p>If an eligible agent is not available, the interaction waits in the queue. The queue and its routing configuration determine how contacts are handled.</p><p>During this time, the flow can play messages or offer a callback, depending on how the solution is configured.</p>",note:"A queue holds interactions waiting for routing. Availability and eligibility determine when an agent can receive the contact.",focus:2,chat:"A common misconception is that putting a call into a queue immediately connects it to an agent. It may wait there until one becomes available."},
+  {title:"Agent assignment",text:"<p>When routing conditions are met and an eligible agent is available, Webex Contact Center offers the interaction to that agent.</p><p>The exact behavior depends on the configured routing method and agent state. The agent can then handle the customer through Agent Desktop.</p>",note:"The routing engine selects an eligible agent according to configuration and agent availability.",focus:3,chat:"At this point, the interaction can be delivered to an agent. We have reached the end of the routing path."},
+  {title:"Check your understanding",text:"<p>Before we finish, answer one question in the instructor chat:</p><p><strong>What is the difference between an Entry Point and a Queue?</strong></p><p>Write your answer in your own words. In this demonstration, feedback is based on a limited set of keywords. A future AI version will be able to evaluate more natural answers.</p>",note:"An Entry Point connects an incoming interaction to a flow; a Queue is used to hold and route interactions toward eligible agents.",focus:2,chat:"Your turn: what is the difference between an Entry Point and a Queue? Type your answer below."}
+];
+let current=0;
+const el=id=>document.getElementById(id);
+function message(body,user=false){const node=document.createElement('div');node.className='bubble'+(user?' user':'');node.textContent=body;el('chatlog').appendChild(node);el('chatlog').scrollTop=el('chatlog').scrollHeight;}
+function render(){const stage=stages[current];el('stepIndex').textContent=`PART ${current+1} OF ${stages.length}`;el('lessonTitle').textContent=stage.title;el('lessonText').innerHTML=stage.text;el('lessonNote').textContent=stage.note;el('counter').textContent=`${current+1} / ${stages.length}`;el('progressFill').style.width=`${100*(current+1)/stages.length}%`;for(const node of document.querySelectorAll('.flow-node'))node.classList.toggle('focus',Number(node.dataset.node)===stage.focus);el('nextBtn').textContent=current===stages.length-1?'Restart lesson ↺':'Continue lesson →';}
+el('nextBtn').addEventListener('click',()=>{current=current===stages.length-1?0:current+1;render();message(stages[current].chat);});
+el('chatForm').addEventListener('submit',e=>{e.preventDefault();const val=el('chatInput').value.trim();if(!val)return;message(val,true);el('chatInput').value='';const q=val.toLowerCase();let reply;if(current===4&&q.includes('entry')&&q.includes('queue'))reply="That's the right distinction: the Entry Point is where a contact enters the configured flow, while the Queue is where the contact waits for routing to an eligible agent. In a real AI session, I'd also evaluate your explanation in context.";else if(q.includes('queue')||q.includes('очеред'))reply="A queue holds interactions waiting for routing. It is not simply a phone number: the Entry Point and flow determine how the interaction reaches the queue.";else if(q.includes('callback')||q.includes('обратн'))reply="A callback lets the customer leave the phone line while a return call is arranged. The behavior depends on the callback type and the configured flow. We'll study callbacks in a dedicated lesson.";else if(q.includes('agent')||q.includes('агент'))reply="An agent needs to be eligible and available under the routing configuration to receive the contact. A contact can wait in the queue when no suitable agent is available.";else if(q.includes('entry')||q.includes('входн'))reply="An Entry Point is the configured entrance for an interaction into a flow. It isn't the same as the queue where an interaction may later wait.";else reply="This is a scripted preview, so I cannot reliably answer arbitrary questions yet. In the next phase we will connect a real AI instructor through a protected backend.";message(reply);});
+el('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();el('chatForm').requestSubmit();}});
+render();message(stages[0].chat);
+</script>
+</body>
+</html>
