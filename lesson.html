@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#182638">
+<meta name="description" content="KCS Academy: author-approved learning with a multilingual AI instructor.">
+<title>KCS Academy v9.2.5 · Learning Workspace</title>
+<style>
+:root{--navy:#172437;--navy-deep:#101c2d;--ink:#192638;--body:#273345;--muted:#677282;--blue:#1a529a;--red:#c92537;--green:#24865d;--line:#d8dde5;--page:#f7f8fa;--paper:#fff;--shade:#eef2f7;font-family:"Segoe UI",Arial,Helvetica,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--page);font-size:16px;line-height:1.55}a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:default}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #7db2fa;outline-offset:2px}[hidden]{display:none!important}body.locked .columns{display:none}body:not(.locked) .hero p,body:not(.locked) .hero-meta{display:none}
+.global-header{height:72px;display:flex;align-items:center;gap:24px;background:linear-gradient(95deg,#17273a,#101e30 75%,#1b2c41);color:#fff;padding:9px 30px;position:relative;z-index:4;box-shadow:0 2px 8px #101c2a21}
+.global-brand{display:flex;align-items:center;flex:none;width:238px;min-width:0}.global-brand img{width:100%;height:auto;max-height:54px;object-fit:contain;object-position:left center;background:#fff;border-radius:3px;padding:2px 4px}.brand-divider{height:34px;border-left:1px solid #b4c0d285}.brand-product{font-size:24px;white-space:nowrap;font-weight:700;letter-spacing:-.6px}.brand-tagline{border-left:1px solid #ffffff56;padding-left:20px;font-size:13px;color:#d5dce6;white-space:nowrap}.header-nav{margin-left:auto;display:flex;align-items:center;gap:25px;font-size:14px;font-weight:600;color:#e9eef5}.header-nav a:hover{text-decoration:underline}
+.layout{display:grid;grid-template-columns:266px minmax(0,1fr);min-height:calc(100vh - 72px)}.sidebar{position:sticky;top:0;align-self:start;height:calc(100vh - 72px);overflow-y:auto;background:#fcfcfd;border-right:1px solid #d5dae3;padding:27px 16px 24px;display:flex;flex-direction:column;gap:0}.side-course{font-weight:700;font-size:16px;padding:0 8px 19px;border-bottom:1px solid #e1e5eb;line-height:1.4}.side-module{padding:23px 8px 23px;border-bottom:1px solid #e1e5eb}.side-module small{font-size:11px;font-weight:760;color:#627184;letter-spacing:.10em;display:block;margin-bottom:9px}.side-module strong{font-size:20px;line-height:1.25;display:block;letter-spacing:-.4px}.lesson-list{padding-top:15px;display:flex;flex-direction:column;gap:4px}.lesson-link{display:flex;align-items:flex-start;gap:11px;padding:13px 10px;border-radius:6px;background:transparent;border-left:4px solid transparent;text-align:left;min-width:0;color:#304154}.lesson-link.selected{background:#e8eef7;border-left-color:#2462b4;color:#132b52}.lesson-link strong{display:block;font-size:14px;line-height:1.3}.lesson-link small{display:block;font-size:11px;color:#6b7c92;margin-top:4px}.circle{width:16px;height:16px;border-radius:50%;border:2px solid #8b98a9;flex:none;margin-top:3px}.lesson-link.selected .circle{border:5px solid #2462b4}.sidebar-progress{margin-top:auto;border-top:1px solid #dfe4eb;padding:20px 7px 0;display:grid;gap:4px}.sidebar-progress>strong{font-size:14px}.sidebar-progress>span{font-size:12px;color:#6c7786}.meter{margin-top:8px;height:7px;background:#dfe4ea;border-radius:20px;overflow:hidden}.meter>div{height:100%;width:0;background:var(--green);border-radius:20px;transition:width .2s}
+.workspace{min-width:0}.topbar{min-height:47px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px clamp(18px,2.6vw,40px);color:#6c788a;background:#fff;border-bottom:1px solid #e8ebf0}.trail{font-size:12px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.trail strong{color:#2e568b}.trail span{margin:0 8px}.version{border:1px solid #e1e6ee;padding:4px 9px;border-radius:4px;font-size:11px;color:#6c7b90;white-space:nowrap}.main{margin:0 auto;max-width:1760px;padding:14px clamp(18px,2.6vw,40px) 34px}.hero{margin:0 0 9px;padding:0}.hero .eyebrow{font-size:12px;color:#285eab;font-weight:720;letter-spacing:.06em;text-transform:uppercase}.hero h1{font-size:clamp(22px,2.05vw,30px);letter-spacing:-.7px;line-height:1.22;margin:3px 0 5px}.hero p{font-size:13px;line-height:1.4;color:#647384;margin:0}.hero-meta{font-size:11px;color:#778499;margin-top:3px}.eyebrow{color:#56708f;font-size:11px;letter-spacing:.07em;text-transform:uppercase;font-weight:800}
+.auth-gate{padding:19px 21px;background:#fff;border:1px solid #dce2eb;border-left:4px solid #2462b4;border-radius:7px;margin-bottom:14px}.auth-gate label{display:block;font-weight:700;font-size:14px;margin-bottom:7px}.auth-gate form{display:flex;align-items:end;gap:12px}.auth-gate input{min-height:44px;padding:10px 12px;border:1px solid #ccd4df;border-radius:5px;min-width:0;flex:1}.auth-gate p{font-size:12px;color:#6b7b8e;margin:8px 0 0}.notice{font-size:12px;padding:4px 0 8px;color:#49705b;min-height:18px;margin:0}.notice.error{color:#ae3030;background:#fff4f4;border:1px solid #edc2c4;padding:11px 13px;border-radius:6px;margin-bottom:12px;font-weight:700}
+.columns{display:flex;flex-direction:column;gap:17px}.card{min-width:0}.learner-main{display:flex;flex-direction:column}.goal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 1px 7px}.goal-head h2{margin:1px 0 0;font-size:16px;font-weight:700}.counts{font-size:12px;color:#6e7b8b;text-align:right}.segments{height:5px;display:flex;gap:5px;margin:0 1px 7px}.seg{flex:1;background:#e0e4eb;border-radius:8px}.seg.mastered{background:#28976b}.mini-status{display:none;font-size:11px;color:#728096;display:flex;justify-content:space-between;gap:10px;padding:0 1px 10px}.slide-frame{background:#fff;border:1px solid #d6dce6;border-radius:10px;overflow:hidden;box-shadow:0 4px 14px #1b2c4510}.slide-head{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:clamp(18px,2.0vw,27px);font-weight:760;line-height:1.25;padding:14px 20px 13px;background:#fbfcfe;border-bottom:1px solid #e1e6eb;letter-spacing:-.4px}.slide-head:before{content:"";align-self:stretch;flex:none;width:4px;border-radius:3px;background:var(--red);margin-right:4px}.slide-head #slideLabel{flex:1}.slide-head button{font-size:13px;letter-spacing:0;border:1px solid #d7dee9;padding:7px 11px;background:#fff;border-radius:5px;color:#285486;font-weight:700;white-space:nowrap}.slide-img{display:flex;align-items:center;justify-content:center;min-height:230px;background:#fff;overflow:hidden}.slide-img img{display:block;width:100%;height:auto;max-width:100%;max-height:none;object-fit:contain}.slide-empty{padding:65px 25px;color:#8a97a8;text-align:center}.slide-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 0 0}.slide-actions{display:flex;align-items:center;gap:13px}.secondary{border:1px solid #c5cedb;background:#fff;color:#243b5b;padding:10px 15px;border-radius:6px;font-weight:650;min-height:43px}.secondary:hover:not(:disabled){background:#f1f5fb}.primary{border:1px solid #144782;background:#1c5398;color:#fff;border-radius:6px;padding:10px 18px;min-height:43px;font-weight:750;box-shadow:0 2px 5px #14345b1f}.primary:hover:not(:disabled){background:#143f78}.action-label{font-size:13px;color:#58677a}.assessment-box{padding:22px 24px;background:#fff;border:1px solid #d9e0e9;border-radius:9px;margin-top:18px}.assessment-box h3{margin:4px 0 12px;font-size:21px;line-height:1.35}.choices{display:grid;gap:9px}.choice{display:flex;align-items:center;gap:12px;text-align:left;width:100%;border:1px solid #cbd4df;border-radius:6px;padding:12px;background:#fff;color:#22344e;font-size:16px}.choice:hover{background:#f4f7fb}.letter{flex:none;width:27px;height:27px;background:#e8eff8;border-radius:5px;display:grid;place-items:center;color:#21518e;font-weight:800}.hint{font-size:12px;color:#687888}.success{color:#167148!important}.warning{color:#a5472b!important}.small-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.final-status{margin-top:17px;border:1px solid #b9e2ca;border-radius:6px;background:#f0faf4;padding:13px;color:#15653c;font-weight:700}.legacy{font-size:12px;margin-top:12px;color:#546b86}.legacy a{text-decoration:underline}
+.ai-panel{background:#fff;border:1px solid #d7dde7;border-left:4px solid var(--red);border-radius:9px;box-shadow:0 4px 14px #1b2c4510;padding:0;overflow:hidden;min-height:0}.ai-top{padding:17px 22px 10px;background:#fff}.ai-brand{display:flex;gap:12px;align-items:center}.ai-icon{background:transparent;color:#243e63;font-size:26px;width:31px;height:31px;display:grid;place-items:center}.ai-brand strong{font-size:21px;font-weight:750}.online{font-size:12px;color:#268052}.online:before{content:'●';margin-right:6px}.ai-subtitle{font-size:12px;color:#667588;margin:5px 0 0 43px}.ai-chat{display:block;overflow:visible;max-height:none;min-height:0;padding:7px 26px 2px}.chat-message{font-size:16px;line-height:1.66;color:#26394e;white-space:pre-wrap;overflow-wrap:anywhere;unicode-bidi:plaintext;padding:12px 15px;margin:0 0 13px;border-radius:5px;border:1px solid #e1e6ed;background:#f5f7fa;max-width:86ch}.chat-message .who{font-size:12px;font-weight:750;color:#345a8d;margin-bottom:7px}.chat-message.student{margin-left:auto;background:#edf3fc;border-color:#d1def0;max-width:82ch}.chat-message.ai{margin-right:auto}.chat-message.lecture{border:0;background:transparent;box-shadow:none;max-width:83ch;padding:0 0 5px;margin:0 0 13px}.chat-message.lecture .who{font-size:14px;font-weight:800;color:#213957}.lecture-body{font:400 18px/1.72 Georgia,"Noto Serif",serif;color:#253043;letter-spacing:0;white-space:pre-wrap;overflow-wrap:break-word}.ai-input{padding:10px 22px 18px;border-top:1px solid #ebeff4;background:#fff}.ai-info{font-size:11px;color:#7d8a9c;margin-bottom:9px}.ai-input form{display:flex;align-items:flex-end;gap:9px}.ai-input textarea{flex:1;min-width:0;padding:13px 15px;min-height:55px;max-height:150px;border:1px solid #c7d1df;border-radius:6px;background:#fff;color:#20364d;resize:vertical;font-size:16px}.ai-input #sendBtn{min-width:55px;font-size:18px}.dialog{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;padding:16px;background:#101d31ed}.dialog-card{max-width:96vw;max-height:95vh;background:#fff;padding:10px;border-radius:8px;display:flex;flex-direction:column;overflow:hidden}.dialog-card img{max-width:93vw;max-height:83vh;object-fit:contain}.dialog-card button{align-self:end;margin-bottom:10px}footer{padding:20px 0 12px;font-size:11px;color:#78879a}.mobile-modes{display:none!important}
+@media(max-width:1200px){.layout{grid-template-columns:220px minmax(0,1fr)}.global-header{gap:14px;padding:8px 18px}.global-brand{width:205px}.brand-product{font-size:21px}.brand-tagline{font-size:12px;padding-left:13px}.sidebar{padding:22px 10px}.main{padding:14px 18px 26px}.slide-head{font-size:22px}}
+@media(max-width:940px){.global-brand{width:185px}.brand-tagline{display:none}.layout{grid-template-columns:194px minmax(0,1fr)}.side-module strong{font-size:17px}.sidebar{padding:17px 8px}.lesson-link{padding:11px 8px}.main{padding:15px}.hero h1{font-size:24px}.slide-head{font-size:21px}.lecture-body{font-size:17px}}
+@media(max-width:700px){.global-header{height:58px;gap:10px;padding:6px 12px;position:relative}.global-brand{width:138px}.global-brand img{max-height:43px}.brand-divider{height:24px}.brand-product{font-size:19px}.header-nav{display:none}.layout{display:block;min-height:calc(100vh - 58px)}.sidebar{position:static;height:auto;min-height:0;border-right:0;border-bottom:1px solid #dce2e9;padding:9px 13px;display:block}.side-course,.side-module,.sidebar-progress{display:none}.lesson-list{display:flex;gap:7px;overflow-x:auto;padding:0}.lesson-link{min-width:175px;max-width:260px;padding:8px 10px;flex:none;border-left-width:3px}.lesson-link strong{font-size:12px}.lesson-link small{display:none}.circle{width:12px;height:12px;margin-top:3px}.topbar{min-height:38px;padding:7px 13px}.trail{font-size:11px}.version{font-size:10px}.main{padding:14px 12px 25px}.hero h1{font-size:clamp(21px,5vw,27px)}.hero p{font-size:12px}.hero-meta{font-size:10px}.goal-head{align-items:flex-start;gap:7px}.goal-head h2{font-size:15px}.counts{text-align:right;font-size:11px}.slide-head{font-size:19px;padding:12px}.slide-head button{padding:5px 7px;font-size:12px}.slide-img{min-height:150px}.slide-footer{gap:7px}.slide-actions{gap:6px}.secondary,.primary{padding:10px 12px;font-size:13px}.ai-top{padding:13px 14px 8px}.ai-chat{padding:7px 16px 0}.ai-input{padding:12px 14px}.lecture-body{font-size:17px;line-height:1.7}.chat-message.lecture{max-width:none}.assessment-box{padding:15px}.assessment-box h3{font-size:18px}.auth-gate form{flex-wrap:wrap}.auth-gate form .primary{width:100%}}
+@media(max-width:390px){.global-brand{width:119px}.brand-product{font-size:17px}.main{padding:10px 9px 22px}.topbar{padding:7px 9px}.hero h1{font-size:21px}.mini-status{flex-wrap:wrap;gap:2px}.goal-head{flex-wrap:wrap}.counts{text-align:left}.slide-head{font-size:17px}.slide-footer{flex-wrap:wrap}.slide-footer #nextBtn{width:100%}.slide-actions{width:100%;justify-content:space-between}.ai-chat{padding:9px 12px 0}.lecture-body{font-size:16.5px}.ai-input textarea{min-height:52px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+/* KCS editorial visual review: faithful, human-scale implementation of approved reference. */
+:root{--navy:#182638;--navy-deep:#142235;--ink:#14243c;--body:#26334a;--muted:#617083;--blue:#1b56a2;--red:#dc2838;--green:#258b67;--line:#e0e4eb;--page:#f5f6f9;--paper:#fff;--shade:#f3f5f8;font-family:Arial,Helvetica,sans-serif}
+html{scroll-behavior:auto}body{font-size:16px;line-height:1.45;color:var(--ink);background:#fafbfc}
+.global-header{height:66px;padding:0 32px;gap:27px;background:linear-gradient(105deg,#1b2b40,#172437 62%,#213045);box-shadow:0 2px 9px rgba(16,32,53,.15)}
+.global-brand{width:280px;gap:12px;min-width:0}.global-brand img{width:46px;height:50px;max-height:50px;object-fit:contain;background:transparent;padding:0;border-radius:0}.logo-wordmark{display:flex;flex-direction:column;line-height:1.02;white-space:nowrap}.logo-wordmark strong{font-size:27px;letter-spacing:-.8px;font-weight:750;color:#fff}.logo-wordmark span{margin-top:5px;font-size:21px;font-weight:600;color:#e93642}
+.brand-divider{height:39px;opacity:.78}.brand-product{font-size:28px;letter-spacing:-.45px;font-weight:600}.header-nav{font-size:15px;gap:30px}.header-nav a{color:#eef2f8}.header-nav a:hover{color:#fff}.help-link{border-left:1px solid #778699;padding-left:24px}
+.layout{grid-template-columns:326px minmax(0,1fr);min-height:calc(100vh - 66px)}.sidebar{height:calc(100vh - 66px);padding:28px 20px 26px;background:#f9fafc;border-right:1px solid #dbe0e9}
+.side-course{font-size:18px;font-weight:740;padding:2px 8px 22px;line-height:1.3;border-color:#e2e7ed}
+.side-module{padding:25px 7px 30px;border-color:#e4e8ee}.side-module small{font-size:14px;letter-spacing:.035em;color:#515f73;font-weight:650;margin-bottom:8px}.side-module strong{font-size:26px;letter-spacing:-.65px;line-height:1.18;font-weight:760}
+.lesson-list{padding-top:15px;gap:4px}.lesson-link{gap:16px;padding:17px 14px 18px 13px;border-left-width:5px;border-radius:10px;color:#24344d}.lesson-link.selected{background:#e4ebf5;border-left-color:#2866bd;color:#162944}.lesson-link .circle{width:22px;height:22px;border-width:2px;margin-top:23px}.lesson-link.selected .circle{border-width:6px;background:#fff;border-color:#2766bd}.lesson-number{display:block;font-size:14px;margin-bottom:3px;font-weight:500}.lesson-link strong{font-size:17px;line-height:1.27;letter-spacing:-.25px}.lesson-link small{font-size:12px;color:#64748b;line-height:1.4;margin-top:8px}.sidebar-progress{padding:23px 9px 0}.sidebar-progress>strong{font-size:17px}.sidebar-progress>span{font-size:13px}.meter{height:11px;margin-top:12px;background:#e0e4ed}.meter>div{background:#245eaf}
+.topbar{display:none}.workspace{background:radial-gradient(circle at 85% 0,#f6f7fb 0,transparent 40%),#fafbfd}.main{max-width:none;padding:17px 33px 56px 40px;margin:0}
+.hero{margin:0 0 17px}.hero-main{display:flex;align-items:center;justify-content:space-between;gap:16px}.hero .eyebrow{font-size:15px;letter-spacing:0;font-weight:550;color:#5c6877;text-transform:none}.hero .eyebrow::first-letter{color:#1c58a5}.hero h1{font-family:Arial,Helvetica,sans-serif;font-size:clamp(26px,2.4vw,39px);line-height:1.18;letter-spacing:-1.05px;margin:6px 0 0;color:#14253e;font-weight:760}.hero p{font-size:14px;margin-top:3px}.hero-meta{font-size:12px}.hero-controls{display:flex;gap:8px}.icon-button{width:48px;height:48px;font-size:29px;line-height:1;background:#fff;border:1px solid #d8e0eb;color:#273a57;border-radius:8px}.icon-button:hover{background:#eef2fa}
+/* Only useful visible status. Live announcements remain available to assistive technology. */
+body:not(.locked) .notice:not(.error){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;padding:0;margin:-1px;border:0}
+.columns{gap:13px}.goal-head{display:none}.segments,.mini-status{display:none}
+.slide-frame{border:1px solid #d4dbe5;border-radius:9px;background:#fff;overflow:hidden;box-shadow:0 2px 8px #152f5412}
+.slide-head{display:none}.slide-img{display:flex;align-items:center;justify-content:center;min-height:0;padding:0;background:#fff;max-height:615px;overflow:hidden}
+.slide-img img{display:block;width:auto;height:auto;max-height:min(62vh,615px);max-width:100%;object-fit:contain;flex:none;image-rendering:auto}
+.slide-empty{min-height:360px;display:grid;place-items:center;font-size:18px;color:#8c96a4}
+.slide-footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:14px 2px 3px}.slide-footer .slide-actions{justify-self:start}.slide-footer #nextBtn{justify-self:end}.slide-footer .action-label{font-size:16px;color:#5f6a77;white-space:nowrap}
+.secondary,.primary{min-height:46px;font-size:16px;border-radius:8px;font-weight:670;padding:10px 19px}.secondary{background:#fff;border:1px solid #cfd6e0;color:#273a58;box-shadow:0 2px 5px #182e4c0c}.primary{background:linear-gradient(115deg,#2462ad,#195298);border-color:#255394;box-shadow:0 3px 8px #103b7021}.primary:hover:not(:disabled){background:#163f75}
+.ai-panel{border:1px solid #d6dde6;border-left:4px solid #d72438;border-radius:9px;background:#fff;box-shadow:0 3px 12px #11294814;overflow:hidden}
+.ai-top{padding:18px 24px 8px}.ai-brand{gap:14px}.ai-icon{color:#15355b;font-size:28px;width:32px;height:32px}.ai-brand strong{font-size:24px;font-weight:760;letter-spacing:-.55px}.online{font-size:13px;color:#176b43;background:#e4f4e9;border:1px solid #cbe9d4;padding:5px 10px;border-radius:32px;margin-left:10px}.online:before{content:'●';font-size:11px;margin-right:7px}.ai-subtitle{display:none}
+.ai-content{display:grid;grid-template-columns:minmax(0,1fr) 266px;gap:22px;align-items:start;padding:4px 22px 6px}.ai-chat{padding:0 0 2px;min-width:0;max-width:none}.chat-message{font-size:17px;line-height:1.48;max-width:none;padding:15px 18px;border-radius:7px}.chat-message.lecture{max-width:none;padding:1px 2px 2px;margin:0 0 7px}.chat-message.lecture .who{display:none}.lecture-body{font-family:Arial,Helvetica,sans-serif;font-size:18.5px;line-height:1.5;color:#263243;white-space:pre-wrap;letter-spacing:-.05px}.chat-message.student{max-width:90%;background:#eff5ff}.chat-message.ai{max-width:95%}
+.goals-aside{border-left:1px solid #d6dce4;padding:5px 0 0 22px;min-width:0;color:#2b3a53}.goals-aside strong{font-size:17px;color:#172b4c}.goals-aside ul{padding-left:17px;margin:13px 0 0;display:grid;gap:10px}.goals-aside li{font-size:14px;line-height:1.4}.goals-aside li::marker{color:#cc2a38}
+.ai-input{padding:10px 20px 18px;border-top:0}.ai-info{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.ai-input form{gap:12px;align-items:stretch}.ai-input textarea{min-height:48px;max-height:130px;font-size:16px;line-height:1.4;padding:14px 15px;border:1px solid #c9d2df;border-radius:8px;background:#fff}.ai-input #sendBtn{min-width:56px;font-size:19px;min-height:49px}
+.assessment-box{margin-top:6px;border-color:#d6dde7;padding:23px 28px}.assessment-box h3{font-size:22px}.choice{border-radius:6px}.legacy{margin-top:10px}footer{padding-top:16px;color:#778293;font-size:12px}
+@media(max-width:1300px){.layout{grid-template-columns:278px minmax(0,1fr)}.sidebar{padding:24px 15px}.main{padding:18px 28px}.global-brand{width:247px}.logo-wordmark strong{font-size:24px}.brand-product{font-size:25px}.side-module strong{font-size:23px}.ai-content{grid-template-columns:minmax(0,1fr) 210px}.slide-img img{max-height:min(57vh,560px)}}
+@media(max-width:980px){.global-header{padding:0 17px;gap:14px}.global-brand{width:210px}.logo-wordmark strong{font-size:20px}.logo-wordmark span{font-size:17px}.brand-product{font-size:22px}.global-header{height:62px}.layout{grid-template-columns:220px minmax(0,1fr);min-height:calc(100vh - 62px)}.sidebar{height:calc(100vh - 62px);padding:17px 10px}.side-module strong{font-size:19px}.side-course{font-size:16px}.lesson-link strong{font-size:15px}.main{padding:19px 22px}.hero h1{font-size:29px}.ai-content{display:block}.goals-aside{display:none}.slide-img img{max-height:none;max-width:100%}}
+@media(max-width:700px){.global-header{height:62px;padding:0 11px;gap:10px}.global-brand{width:auto;gap:7px}.global-brand img{width:33px;height:39px}.logo-wordmark strong{font-size:17px;letter-spacing:-.4px}.logo-wordmark span{font-size:14px;margin-top:3px}.brand-divider{height:25px}.brand-product{font-size:18px}.header-nav{display:none}.layout{display:block;min-height:calc(100vh - 62px)}.sidebar{height:auto;position:static;padding:10px 14px;border-right:0;border-bottom:1px solid #dce2e8}.side-course,.side-module,.sidebar-progress{display:none}.lesson-list{display:flex;flex-direction:row;gap:7px;overflow-x:auto;padding:0}.lesson-link{flex:0 0 auto;min-width:170px;max-width:260px;padding:9px 10px;border-left-width:4px}.lesson-link .circle{width:15px;height:15px;margin-top:7px}.lesson-link.selected .circle{border-width:4px}.lesson-number{font-size:12px;margin:0}.lesson-link strong{font-size:13px}.lesson-link small{display:none}.main{padding:17px 12px 30px}.hero{margin-bottom:15px}.hero h1{font-size:clamp(23px,6vw,29px);letter-spacing:-.6px;line-height:1.18}.hero .eyebrow{font-size:13px}.hero-controls{align-self:start}.icon-button{height:38px;width:38px;font-size:24px}.slide-frame{border-radius:7px}.slide-img img{max-height:none;width:100%;max-width:100%}.slide-footer{gap:7px;padding:12px 0 0}.slide-footer .action-label{font-size:12px}.secondary,.primary{font-size:13px;padding:8px 10px;min-height:42px}.ai-top{padding:14px 15px 7px}.ai-icon{font-size:22px;width:24px;height:24px}.ai-brand{gap:7px;flex-wrap:wrap}.ai-brand strong{font-size:22px}.online{font-size:11px;margin:0;padding:4px 8px}.ai-content{padding:5px 15px}.chat-message.lecture{max-width:none}.lecture-body{font-size:17.5px;line-height:1.53}.chat-message{font-size:16px}.ai-input{padding:8px 13px 13px}.ai-input textarea{font-size:16px;min-height:50px}.ai-input #sendBtn{min-width:45px;padding:8px}.assessment-box{padding:16px}.assessment-box h3{font-size:19px}}
+@media(max-width:390px){.global-header{gap:6px}.brand-divider{margin:0 3px}.brand-product{font-size:16px}.logo-wordmark strong{font-size:16px}.logo-wordmark span{font-size:13px}.main{padding:14px 9px 30px}.hero h1{font-size:23px}.slide-footer{display:grid;grid-template-columns:1fr 1fr}.slide-footer .action-label{grid-column:1 / -1;grid-row:1;text-align:center}.slide-footer #nextBtn{grid-column:2;grid-row:2;width:100%}.slide-footer .slide-actions{grid-column:1;grid-row:2}.slide-footer #previousBtn{width:100%}.ai-content{padding:6px 13px}.lecture-body{font-size:17px}}
+
+
+/* v9.2.4 — actual HTML design system, icons from inline SVG, no fake course data. */
+:root{--navy:#1a273a;--ink:#1b2639;--blue:#245aab;--red:#d72f42;--line:#dce1e9;--page:#f9fafc;font-family:Inter,"Segoe UI",Arial,sans-serif}
+body{font-family:Inter,"Segoe UI",Arial,sans-serif;background:#fbfcfe;color:var(--ink);font-size:16px;-webkit-font-smoothing:antialiased}
+.global-header{height:66px;background:linear-gradient(100deg,#1e3047,#182539 74%,#202d40);gap:28px;box-shadow:0 2px 8px #101f3520;padding:0 32px}
+.global-brand{width:274px;gap:12px}.brand-divider{height:39px;border-color:#9daabe90}.brand-product{font-size:28px;font-weight:570;letter-spacing:-.6px}
+.header-nav{gap:30px;font-size:15px;font-weight:600;align-self:stretch}.header-link{display:inline-flex;align-items:center;gap:9px;color:#f2f6fc!important;white-space:nowrap;padding:0;text-decoration:none;transition:opacity .15s}.header-link:hover{opacity:.75;text-decoration:none!important}.header-link .icon{stroke-width:1.8}.header-menu{background:transparent;border:0;line-height:1.2;color:#f2f6fc;font-weight:600}.menu-parent{position:relative;display:flex;align-items:center}.profile-menu{border-left:1px solid #728096a8;padding-left:20px;margin-left:-7px}.profile-button{border:0;background:none;color:#fff;display:flex;align-items:center;gap:10px;padding:0;min-height:48px}.profile-avatar{width:42px;height:42px;background:linear-gradient(145deg,#f6f8fc,#e2e6ee);border:2px solid #a5b0be;border-radius:50%;display:grid;place-items:center;color:#213249;font-weight:750;font-size:18px;box-shadow:inset 0 1px 3px #fff}
+.floating-menu{position:absolute;top:calc(100% - 1px);right:0;width:280px;background:#fff;border:1px solid #cdd6e3;color:#1b2b42;box-shadow:0 14px 40px #16274024;border-radius:9px;padding:16px;z-index:25;display:grid;gap:10px;font-size:14px;text-align:left;white-space:normal}.floating-menu strong{font-size:15px;font-weight:750}.floating-menu p{color:#506176;margin:0;line-height:1.5;font-weight:400}.floating-menu a{color:#174b8f;text-decoration:underline}.floating-menu>button{border:0;border-top:1px solid #e2e8f0;background:#fff;padding:12px 2px 3px;display:flex;gap:9px;align-items:center;color:#26425f;text-align:left;font-size:14px;font-weight:600}.floating-menu>button:hover{color:#0c4d93}.slide-more-popup{top:calc(100% + 8px)}
+.layout{grid-template-columns:326px minmax(0,1fr)}.sidebar{height:calc(100vh - 66px);background:#fafbfc;border-right:1px solid #d5dce6;padding:28px 19px 23px}.side-course{font-size:17px;padding:2px 8px 23px}.side-module{padding:24px 8px 25px}.side-module small{letter-spacing:.055em;font-size:13px}.side-module strong{font-size:25px;letter-spacing:-.7px}.lesson-link{border-radius:9px}.lesson-link.selected{background:linear-gradient(98deg,#e0e8f6,#e9eef7);border-left-color:#245dad}.lesson-link strong{font-size:17px}.sidebar-progress .meter>div{background:#235eb5}
+.workspace{background:#fbfcfe}.main{max-width:none;margin:0;padding:17px 34px 54px 41px}.hero{margin:0 0 19px}.hero .eyebrow{font-size:15px;color:#516078;font-weight:550;letter-spacing:0}.hero h1{font-size:clamp(27px,2.3vw,38px);font-weight:750;letter-spacing:-1.3px;line-height:1.18;margin:5px 0 0;color:#1c293d}.hero-controls{display:flex;gap:9px;align-items:center;align-self:flex-start;margin-top:4px}.icon-button{width:48px;height:48px;border:1px solid #d4dce7;border-radius:10px;background:#fff;display:grid;place-items:center;box-shadow:0 1px 3px #1c33450b;color:#2c3b50}.icon-button:hover{background:#f2f6fc;border-color:#b8c5d6}
+.slide-frame{box-shadow:0 3px 14px #162c4b11;border-radius:9px;border-color:#d9e0e8}.slide-img{background:#fff}.slide-img img{width:auto;height:auto;max-width:100%;max-height:min(62vh,615px);object-fit:contain}.slide-footer{gap:11px;padding:15px 2px 7px;grid-template-columns:1fr auto 1fr}.slide-footer .slide-actions{display:flex}.slide-pagination{display:flex;align-items:center;justify-content:center;gap:24px}.slide-dots{display:flex;align-items:center;justify-content:center;gap:11px}.slide-dot{width:11px;height:11px;border-radius:100%;background:#cbd2dd;display:inline-block;box-shadow:inset 0 0 0 1px #9eacbe52;transition:background .15s,transform .15s}.slide-dot.visited{background:#91a8cc}.slide-dot.active{background:#245bab;box-shadow:0 0 0 2px #132e5f0f;transform:scale(1.1)}.slide-footer .action-label{font-size:15px;color:#4e5969}.slide-footer button{display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap}.secondary,.primary{min-height:46px;padding:10px 16px;font-size:15px;font-weight:690;border-radius:8px}.primary{background:linear-gradient(120deg,#2364b9,#164781);border-color:#204b88;box-shadow:0 3px 9px #235ca128}
+.ai-panel{margin-top:3px;border:1px solid #d6dce7;border-left:4px solid #d9233c;border-radius:9px;box-shadow:0 4px 14px #18304d12;position:relative;overflow:visible}.ai-top{padding:16px 22px 8px}.ai-brand{gap:15px}.ai-icon{width:34px;height:34px;color:#243d68}.ai-brand strong{font-size:24px;letter-spacing:-.8px}.online{background:#e7f5eb;border:1px solid #c8e6d1;color:#1c6944;border-radius:100px;font-size:13px;margin-left:14px;padding:5px 12px}.ai-content{padding:8px 22px 2px;grid-template-columns:minmax(0,1fr) 275px;gap:26px}.lecture-body{font-family:Georgia,"Charter",serif;font-size:18px;line-height:1.55;color:#172638}.goals-aside{padding-left:23px}.goals-aside strong{font-size:16px}.ai-input{padding:9px 19px 18px}.ai-input textarea{background:#fff;border:1px solid #c3ccda;min-height:48px;padding:12px 15px;box-shadow:0 1px 4px #1d335208}.ai-input #sendBtn{width:53px;min-width:53px;padding:0;display:grid;place-items:center}
+@media(max-width:1360px){.global-header{padding:0 20px;gap:19px}.global-brand{width:245px}.logo-wordmark strong{font-size:23px}.logo-wordmark span{font-size:17px}.brand-product{font-size:25px}.header-nav{gap:19px}.layout{grid-template-columns:275px minmax(0,1fr)}.sidebar{padding:25px 12px}.main{padding:20px 25px}.hero h1{font-size:clamp(25px,2.4vw,36px)}.ai-content{grid-template-columns:minmax(0,1fr) 220px}}
+@media(max-width:1040px){.global-header{gap:12px}.brand-product{font-size:23px}.global-brand{width:215px}.header-nav{gap:14px}.header-link{gap:6px;font-size:13px}.header-link .icon{width:21px}.profile-menu{padding-left:12px;margin-left:0}.profile-avatar{width:36px;height:36px;font-size:15px}.layout{grid-template-columns:220px minmax(0,1fr)}.sidebar{padding:20px 10px}.side-module strong{font-size:21px}.main{padding:18px 22px}.ai-content{display:block}.goals-aside{display:none}.hero h1{font-size:29px}}
+@media(max-width:760px){.header-nav{gap:12px;margin-left:auto}.header-link span{display:none}.header-link .icon{width:22px;height:22px}.header-link{min-width:28px;justify-content:center}.profile-menu{padding-left:10px}.profile-avatar{width:33px;height:33px}.global-header{height:62px;gap:8px;padding:0 12px}.global-brand{width:auto;gap:8px}.global-brand img{width:33px;height:40px}.logo-wordmark strong{font-size:18px}.logo-wordmark span{font-size:13px}.brand-divider{height:24px}.brand-product{font-size:18px}.layout{display:block}.sidebar{position:static;height:auto;padding:9px 12px}.side-course,.side-module,.sidebar-progress{display:none}.lesson-list{display:flex;flex-direction:row;padding:0;overflow-x:auto;gap:7px}.lesson-link{min-width:200px;max-width:270px;padding:10px 12px}.lesson-link .circle{margin-top:9px}.lesson-link strong{font-size:13px}.lesson-link small{display:none}.main{padding:17px 13px 30px}.hero{margin-bottom:15px}.hero h1{font-size:clamp(23px,5.4vw,31px);letter-spacing:-.7px}.hero .eyebrow{font-size:13px}.hero-controls{margin-top:0;gap:6px}.icon-button{width:40px;height:40px}.icon-button svg{width:19px;height:19px}.slide-footer{gap:11px}.slide-pagination{gap:8px}.slide-dots{gap:6px}.slide-dot{height:8px;width:8px}.slide-footer .action-label{font-size:12px}.slide-footer button{font-size:13px;gap:3px;padding:7px 9px;min-height:41px}.slide-footer button svg{width:16px}.ai-panel{margin-top:0}.ai-top{padding:15px 16px 7px}.ai-icon{width:30px;height:30px}.ai-brand{gap:9px}.ai-brand strong{font-size:21px}.online{margin-left:0;font-size:11px;padding:4px 7px}.ai-content{padding:6px 15px}.lecture-body{font-size:18px;line-height:1.55}.ai-input{padding:11px 12px 14px}.floating-menu{right:0;width:min(290px,calc(100vw - 25px))}}
+@media(max-width:420px){.global-header{gap:7px}.brand-product{font-size:16px}.logo-wordmark strong{font-size:16px}.logo-wordmark span{font-size:12px}.header-nav{gap:8px}.header-link .icon{height:21px;width:21px}.profile-menu{padding-left:7px}.profile-avatar{width:29px;height:29px;font-size:13px}.profile-button{gap:3px}.profile-button .icon{width:12px}.hero h1{font-size:24px}.slide-footer{display:flex;flex-wrap:wrap;justify-content:space-between}.slide-pagination{order:-1;width:100%;justify-content:center}.slide-footer .slide-actions{flex:1;min-width:0}.slide-footer #nextBtn{flex:1;min-width:0}.slide-footer #previousBtn{width:100%}.slide-footer .slide-actions{max-width:47%}.slide-footer button{min-width:0}.floating-menu{position:fixed;top:60px;right:8px}}
+
+
+/* Refined instructor heading: label and progress on one baseline. */
+.ai-brand>div{display:flex;align-items:center;flex-wrap:wrap;gap:9px}.ai-brand .online{margin-left:0}.ai-chat{position:relative}
+@media(max-width:700px){.ai-brand>div{gap:6px}.ai-brand .online{margin:0}}
+
+/* Mobile uses compact functional header icons instead of hiding navigation. */
+@media(max-width:760px){.header-nav{display:flex;gap:9px}.global-header .logo-wordmark{display:none}.global-brand{width:auto}.header-link .icon{width:21px;height:21px}.brand-product{font-size:18px}.global-header .brand-divider{height:23px}.profile-avatar{width:31px;height:31px}}
+@media(max-width:420px){.header-nav{gap:7px}.global-header{gap:7px}.global-brand img{width:27px;height:36px}.brand-product{font-size:17px}.header-link .icon{width:20px;height:20px}.profile-menu{padding-left:7px}.profile-button .icon{width:12px}}
+
+@media(max-width:360px){.global-header{padding:0 8px;gap:5px}.global-header .brand-divider{display:none}.brand-product{font-size:16px}.header-nav{gap:5px}.header-link .icon{width:19px;height:19px}.profile-button .icon-chevron{display:none}.profile-menu{padding-left:5px}.global-brand img{width:25px}}
+
+/* v9.2.5 · A single visible lecture per slide; answered checks remain reviewable. */
+#slideFrame{scroll-margin-top:16px}
+#assessmentPanel{scroll-margin-top:16px}
+.ai-chat .chat-message.lecture{max-width:90ch}
+.quiz-history{margin:0;border:1px solid #d8dee8;border-radius:9px;padding:18px 24px;background:#fff}
+.quiz-history h3{font-size:18px;margin:0 0 12px;letter-spacing:-.3px}
+.quiz-history details{border:1px solid #d9e1e9;border-radius:7px;background:#fbfcfe;margin:8px 0;overflow:hidden}
+.quiz-history summary{cursor:pointer;padding:12px 14px;font-weight:700;font-size:15px;color:#233b59;list-style-position:inside}
+.quiz-review-body{padding:3px 16px 15px}
+.quiz-review-question{font-weight:700;font-size:17px;margin:6px 0 12px}
+.quiz-review-choice{display:flex;gap:12px;padding:6px 10px;border:1px solid transparent;border-radius:5px;font-size:15px}
+.quiz-review-choice.chosen{background:#e9f1fe;border-color:#a5c4ed;color:#183e72;font-weight:700}
+.quiz-review-feedback{font-size:13px;margin:12px 0 0;color:#57677c}.quiz-review-explanation{font-size:15px;line-height:1.55;margin:9px 0 0;border-left:3px solid #8aafd9;padding:6px 12px;color:#26384d;background:#f5f8fd}
+.finish-no-pass{border-color:#d5c5bd;color:#794a39}
+.finish-no-pass:hover{background:#fff6f1!important}
+#completionPanel{font-size:16px}
+@media(max-width:700px){.quiz-history{padding:14px}.quiz-review-choice{font-size:14px}.finish-no-pass{width:100%}}
+</style></head>
+<body class="locked">
+<header class="global-header">
+ <a href="lesson.html" class="global-brand" aria-label="Knowledge Club Slovakia — KCS Academy">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGMAAACLCAYAAAB1LCd6AAAII0lEQVR4nO3daWwcZx3H8d8zx6738BEfcWzn2CQmlxPHqDRUKW0aCVAoSoWqiqtcDYegL5CCAhIvAKECgoJKQVBQqr4pRQ1tUhSoqCJI0jYhjYKF0iQmNElju25qr+3Y8bXnzPPnxdo5urveXXtr//H+P5KVFyPvjPbreWaemYlGEREED8Z8b4C4QWIwIjEYkRiMSAxGJAYjEoMRicGIxGBEYjAiMRiRGIxIDEasYn3QlcEJ6g6PYXA0hv7hKK6OxmFI6lsQpX4e2rEWi6t86t3LZxVjYCRGL53qxrFzfTjffQ09A+MYHInB1QTTSFtXyXO1hibCji3LsLjKl7Z8RjEGRqL07JFLePrvF9EZHsVEzIHHMuCxDAR9NpR0yEhrgqbsf6gFxzh4opMef+EsTv23H7ZlwrYMVAU8s95QUUCMaNzBo8+dpt8c7EA04aDcLwGKLa8Y18bjtGfvSex7+RI8lolgmf1eb1dJyhljIpakPXtfw76jb8LnteTA/B6a9uSTiPCzP52WEHNk2hgvHO+k3x7sgNc2JMQcyBrjyuAEPfrcaSQdDdsy53KbSlbWGM8cvoiznUPwlxVtki5yyBijdyhCfzx8EV5b9oi5lDHGiye78PbAOCxTLi7NpbRvW2vCK2d6EU24ctCeY2kxusNjdPHKKDy27BVzLe0b7wyPoSs8Bo+cQc25tBiDIzFcG4/LEDUP0mK8czUCQ66Bz4u0GNGEAyUx5kVaDNkr5o+cMjEiMRiRGIxIDEYkBiMSgxGJwYjEYERiMCIxGJEYjEgMRiQGIxKDEYnBiMRgRGIwIjEYkRiMSAxGJAYjEoMRicGIxGBEYjAiMRiRGIxIDEYkBiMSgxGJwYjEYERiMCIxGJEYjEgMRiQGIxKDEYnBiMRgRGIwIjEYkRiMSAxGJAYjEoMRicGIxGBEYjAiMRiRGIxIDEYkBiMSgxGJwYjEYERiMCIxGJEYjEgMRiQGIxKDEYnBiMRgpKivpyRKvZyXivmhC4h2CXqa76coMZKORjzpwjQVPJYJ25IdLhNtpGJke3fPrGI4rkYk7qCuyoctyxdjY6gaLaFFWN1QMZuPXbAIqdEjVF+ecfmMYmgixBIuyv02vvjRtdh5xwrctbFBmaa8r2k2Co7hakI04eCe1kZ855NtuLu1QQoUSUExXE2IJRx89d71+N5nb0N1hVdCFFHeMVxNiCdcPHzfRjzypduVJ8dBumfvU3T18FGYgcCsN3LBIAK0RvMjP4Bv+bK0P+S8YhCAaNzBp+5pxk92bVH5vGp09PUz6P/L32Avqip4mxcq0hrQGqFv7864PK8YsYSLltAi/PALt+X9zlfD64UZDMAM+PPf2gVuKoYyMo8qOWMQEUwFfO3jG7C0Lpj3MUIZBpRpQpny9uTrlLrxk0HOGBMxB3e2LMEDd68qaL1Nn38Q1dvugmF7Cvq9BY0IRISypqaMi6eNQZSKuG1zIyr9noLOnMo3b1LlmzcV8islb9pTIsfVqK304c6W+rnanpI27Z7hao2qgAdtq2sL/mAdj4OSDmUbH0sXwfD5VKaDeM5hanGVD5WBwoYoAHjrib008NIhWMFgob+6cBGBtMa6x39O/pWh3PMMuulfpRSaamc2aYt2dWHkVLvMM24ydWqro9GMy9NiFGtQUZYF5fFA2XaRPnEBmIyR96lt/SIfXK2hkJpjhIczV8yFJqf+ILnVdF3q7lvW7yQtRl2lDx7LTH2ZCugdjiAad+DzFnaBd9We3Vj2lYegDJn03ZCK4AulHy+ADDGaav1YWhdAeDgC01AYjyTR0T1MH1hTV9AI5m1sUN7GhhltcqlKO79qbqxEc2MFYgkN2zTRNxzBsbO987FtJSdtzwj6bNW2upaOnH4HUKmJ3/FzffjGzhaUefIfciKXuyjR3w9lFfWZh/9/RAi2rIfp9+d3Cf2+rSH84R8XMBZJIuiz8cqZXhw5fYXu3bI876Hq7SefQu++52FVVs5m0xcWrUFao23/swiuW5O2OGOM29fUqe2bG2n/q5cRtGxEkw5+eeAMPrhuMdVUlOUVxI3F4IyOy1Xbm0zNM6DdjMuzjiFf/th6HGrvQTyp4S+zcPJ8Px7bfwY/3rUlvzVrDXIdkJt5xaXoeowsssbYuqFe7dqxjh47cBZB04DXNvH7FzvQVBegh3e25Nw77Joa+EIrYFXIYztTiCZvLmWZCCuaZlLWNxShz/30CF77TxjlfhuJpAuf18LuB1qx+/7WaW+/Jq5eJXdsPOtdrVLmWVKvDE/6fZ5pYwBA+4UB2vWLl9HZN4ZgmYW4o+Fqwme2r8Z3P/1+rKgvl8uyRZIzBgCc6AjT13/1Ki73jiLosycf2XGxakk5Hvzw+7DzjhDWL6+SKLOUVwwA+NcbA/TNJ47j9TeH4PeasEwD8aSLRFKjuakCWzcsQevqamwKVWNRsAwNNT4EymwJlIHHMqAyXCzMOwYAdPeP0Y+e+TcOHLuMpKvh91pQSiGWcBFLugiWWSj3e+CxUgd8Sx73vIXWqUdjn//+R7B2afpIUlAMIHXB8c//7KTf/bUD7RcG4LgEy1SwTGNyhTT5gC/JBdt30Tr1FPqJX38CrStrZvYQ282UAu7/0Eq1va2RDrX3YN/RS3ijZwTha1FMRJMwDAXbNIp3Y2QB0ZSKkU3Be0Ym598apuPn+nC5dxS9QxH0DUWRdF0oKXILmozx5Le2obmxcvbDVD4rHBqLk6Oz/6eQkkZAdYVXTQ3rNyt6DDFzMj1mRGIwIjEYkRiMSAxG/gf4r8rYiiVh1wAAAABJRU5ErkJggg==" alt="" width="40" height="48"><span class="logo-wordmark"><strong>Knowledge Club</strong><span>Slovakia</span></span>
+ </a>
+ <span class="brand-divider" aria-hidden="true"></span>
+ <strong class="brand-product">KCS Academy</strong>
+ 
+ <nav class="header-nav" aria-label="Workspace navigation">
+  <a class="header-link" href="#courseNavigation"><svg class="icon icon-book" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18V5.7a2 2 0 0 1 2-2h3.6c1.4 0 2.5.5 3.4 1.3.9-.8 2-1.3 3.4-1.3H19a2 2 0 0 1 2 2V18h-5.6c-1.4 0-2.6.5-3.4 1.4-.8-.9-2-1.4-3.4-1.4z"/></svg><span>My Courses</span></a>
+  <a class="header-link" href="#progressArea"><svg class="icon icon-chart" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18"/><path d="M5 17v-5"/><path d="M10 17V8"/><path d="M15 17V4"/><path d="M20 17v-9"/></svg><span>My Progress</span></a>
+  <div class="menu-parent"><button type="button" id="helpToggle" class="header-link header-menu" aria-haspopup="true" aria-expanded="false" aria-controls="helpPopup"><svg class="icon icon-help" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.4 9a2.6 2.6 0 1 1 5 1c-.4 1-2.3 1.6-2.3 3.2"/><path d="M12 17h.01"/></svg><span>Help</span></button>
+   <div class="floating-menu help-popup" id="helpPopup" hidden><strong>Using KCS Academy</strong><p>Read the original slide, then the approved lecture from AI Instructor. Ask questions in any language. Complete the Knowledge check before continuing.</p><a href="#aiChat" id="jumpToTeacher">Go to AI Instructor</a></div></div>
+  <div class="menu-parent profile-menu"><button type="button" id="profileToggle" class="profile-button" aria-expanded="false" aria-haspopup="true" aria-controls="profilePopup" aria-label="Student session"><span class="profile-avatar">S</span><svg class="icon icon-chevron" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+    <div class="floating-menu" id="profilePopup" hidden><strong>Student session</strong><p>Progress is saved locally in this browser.</p><button type="button" id="signOutBtn"><svg class="icon icon-logout" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg> Sign out</button></div></div>
+ </nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="courseNavigation" aria-label="Course navigation">
+ <div class="side-course">‹ &nbsp;Webex Contact Center</div>
+ <div class="side-module"><small>MODULE</small><strong id="sidebarModule">Module 03 · Call Routing and Call Flows</strong></div>
+ <div class="lesson-list" id="lessonList"><div class="hint">Loading published lessons…</div></div>
+ <div class="sidebar-progress" id="progressArea"><strong>Learning goals</strong><span id="courseProgressText">0 goals demonstrated</span><div class="meter"><div id="courseMeter"></div></div></div>
+</aside>
+<div class="workspace">
+ <div class="topbar"><div class="trail">Webex Contact Center <span aria-hidden="true">›</span> <strong id="topLesson">Lesson</strong></div><span class="version">KCS Academy v9.2.5</span></div>
+ <main class="main">
+  <section class="hero"><div class="hero-main"><div class="hero-headings"><div class="eyebrow" id="moduleTitle">Lesson 01 · Slide 1 of 6</div><h1 id="lessonTitle">How an Incoming Call Is Handled</h1><p id="lessonDescription">Author-approved English lecture and assessments. Ask the AI instructor questions in any language.</p><div class="hero-meta" id="heroMeta">Loading published course edition…</div></div><div class="hero-controls"><button id="enlargeBtn" class="icon-button" type="button" hidden aria-label="Enlarge slide" title="Enlarge slide"><svg class="icon icon-expand" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H4a1 1 0 0 0-1 1v4m13-5h4a1 1 0 0 1 1 1v4M3 16v4a1 1 0 0 0 1 1h4m13-5v4a1 1 0 0 1-1 1h-4"/><path d="M8 8 3 3m13 5 5-5M8 16l-5 5m13-5 5 5"/></svg></button><div class="menu-parent"><button id="slideMoreBtn" class="icon-button" type="button" aria-label="More lesson actions" title="More actions" aria-haspopup="true" aria-expanded="false" aria-controls="slideMorePopup"><svg class="icon icon-more" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></button><div id="slideMorePopup" class="floating-menu slide-more-popup" hidden><strong>Lesson actions</strong><button id="copyLessonBtn" type="button"><svg class="icon icon-copy" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg> Copy lesson link</button><button id="menuRestartBtn" type="button"><svg class="icon icon-reload" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.3-6.3L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.3 6.3L3 16m0 5v-5h5"/></svg> Restart lesson</button></div></div></div></div></section>
+  <div class="auth-gate" id="loginBox"><form id="loginForm"><div style="flex:1"><label for="accessCode">Pilot student access code</label><input id="accessCode" type="password" autocomplete="off" required placeholder="Enter your access code"></div><button class="primary" type="submit" id="loginBtn">Start / Resume lesson</button></form><p>Access code stays in this tab. Your progress and selected lesson edition are saved in this browser.</p></div>
+  <div class="notice" id="notice" role="status" aria-live="polite">Select a lesson and sign in to begin.</div>
+  <nav class="mobile-modes" hidden aria-label="Mobile learning workspace"><button type="button" id="viewSlideBtn" aria-pressed="true">▣ Slide &amp; quiz</button><button type="button" id="viewTeacherBtn" aria-pressed="false">✧ AI Instructor</button></nav>
+  <div class="columns">
+   <section class="card learner-main" aria-label="Approved lesson content">
+    <div class="goal-head"><div><div class="eyebrow" id="episodeStep">TEACHING EPISODE</div><h2 id="episodeTitle">Follow the incoming call</h2></div><div class="counts" id="goalCounts">0 topics covered · 0 learning goals demonstrated</div></div>
+    <div class="segments" id="goalSegments" aria-label="Learning goals progress"></div><div class="mini-status"><span id="versionText">Published edition</span><span>Green = demonstrated · grey = not demonstrated</span></div>
+    <section class="slide-frame" id="slideFrame"><div class="slide-head"><span id="slideLabel">SOURCE SLIDE · Ready to begin</span></div><div class="slide-img" id="slideViewer"><div class="slide-empty">The original slide will appear here. AI Instructor will present the approved English lecture below.</div></div></section>
+    <div class="slide-footer"><div class="slide-actions"><button type="button" id="previousBtn" class="secondary" disabled><svg class="icon icon-left" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg><span>Previous slide</span></button></div><div class="slide-pagination" aria-label="Slide progress"><div class="slide-dots" id="slideDots" aria-hidden="true"></div><span class="action-label" id="slideCount"></span></div><button type="button" id="nextBtn" class="primary" disabled><span>Next slide</span><svg class="icon icon-right" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button></div>
+   </section>
+   <aside class="card ai-panel" id="aiPanel" aria-label="AI instructor dialogue">
+    <div class="ai-top"><div class="ai-brand"><div class="ai-icon" aria-hidden="true"><svg class="icon icon-sparkle" width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.9 6.1L20 11l-6.1 1.9L12 19l-1.9-6.1L4 11l6.1-1.9L12 3ZM19 19l.8 1.2L21 21l-1.2.8L19 23l-.8-1.2L17 21l1.2-.8L19 19Z"/></svg></div><div><strong>AI Instructor</strong><div class="online" id="aiStatus">Ready when you sign in</div></div></div><div class="ai-subtitle">I present each approved lecture below the slide, then answer your questions in any language.</div></div>
+    <div class="ai-content"><div class="ai-chat" id="aiChat" role="log" aria-label="Approved English lectures and student instructor dialogue" aria-live="polite"><div class="chat-message ai"><div class="who">AI Instructor</div>Welcome to KCS Academy. Open a slide to read its approved lecture, then ask questions in any language.</div></div><aside class="goals-aside" aria-label="Learning goals"><strong>Learning goals</strong><ul id="learningGoalList"></ul></aside></div>
+    <div class="ai-input"><div class="ai-info">The correct answer to an open Knowledge check is never disclosed.</div><form id="chatForm"><textarea id="chatText" maxlength="700" dir="auto" placeholder="Ask the AI Instructor in any language…" disabled></textarea><button id="sendBtn" class="primary" type="submit" disabled aria-label="Send question"><svg class="icon icon-send" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4 20-7Z"/><path d="M22 2 11 13"/></svg></button></form></div>
+   </aside>
+    <section class="assessment-box" id="assessmentPanel" hidden><div class="eyebrow" id="assessmentLabel">Knowledge check</div><h3 id="assessmentQuestion"></h3><div class="choices" id="quizChoices"></div><div class="small-actions"><button id="skipBtn" class="secondary" type="button">Continue lesson without score</button><button id="finalHelpBtn" class="secondary" type="button" hidden>Explain this task</button><button id="finishWithoutPassBtn" class="secondary finish-no-pass" type="button" hidden>Finish without passing</button></div><p class="hint" id="assessmentHint">Choose one answer. The AI will not reveal the correct option before submission.</p></section>
+    <section class="quiz-history" id="quizReviewPanel" hidden aria-label="Completed Knowledge checks"><h3>Completed Knowledge checks</h3><div id="quizReviewList"></div></section>
+    <section class="final-status" id="completionPanel" hidden></section>
+    <div class="small-actions"><button type="button" class="secondary" id="restartBtn" disabled>Restart this lesson</button><button type="button" class="secondary" id="chooseCurrentBtn" hidden>Start latest published edition</button></div>
+    <div class="legacy" id="legacyBanner" hidden>Previous v9.1 study history is preserved. <a href="lesson-v91.html">Continue the earlier attempt</a>.</div>
+  </div>
+  <footer>Training content is author-approved and versioned. AI answers and assessments are experimental and are not a Cisco certification. · <a href="author.html" style="text-decoration:underline">Instructor Course Editor</a></footer>
+ </main>
+</div></div>
+<div class="dialog" id="imageDialog" role="dialog" aria-modal="true" aria-label="Enlarged slide" hidden><div class="dialog-card"><button class="secondary" id="closeDialog" type="button">Close ×</button><img id="dialogImage" alt="Enlarged approved slide"></div></div>
+<script>
+'use strict';
+const API='https://kcs-academy-api.dmytrobenda.workers.dev/api/v92';
+const $=id=>document.getElementById(id);
+const LEGACY_KEY='kcs-academy-v81-english-notes-progress';
+let catalog=[],lesson=null,publishedVersion=0,signed=null,records=[],viewSlide=null,viewAt=0,access='',activeId='',busy=false;
+let idleTimer=null;const IDLE_MS=30*60*1000;
+function touchSession(){if(!access)return;clearTimeout(idleTimer);idleTimer=setTimeout(()=>{if(!access)return;access='';$('loginBox').hidden=false;document.body.classList.add('locked');save();render();announce('Session locked after 30 minutes of inactivity. Re-enter the student access code; progress is preserved.');},IDLE_MS);}
+const stateKey=id=>'kcs-academy-v92-attempt-'+id;
+const safe=(v)=>String(v==null?'':v);
+function announce(message,error=false){$('notice').textContent=message;$('notice').className='notice'+(error?' error':'');}
+async function api(path,{method='GET',body=null,author=false,raw=false}={}){
+ const headers={};if(body&&!raw)headers['Content-Type']='application/json';if(access)headers['X-KCS-Code']=access;
+ const res=await fetch(API+path,{method,headers,body:body?(raw?body:JSON.stringify(body)):undefined,cache:'no-store'});
+ let result=await res.json().catch(()=>null);if(!res.ok)throw new Error(result?.error||'Course service unavailable ('+res.status+')');return result;
+}
+function restore(id){try{const s=JSON.parse(localStorage.getItem(stateKey(id))||'null');return s&&s.id===id&&s.state&&s.seal?s:null;}catch{return null;}}
+function save(){if(!lesson||!signed)return;try{localStorage.setItem(stateKey(lesson.id),JSON.stringify({id:lesson.id,version:lesson.version,state:signed.state,seal:signed.seal,records:records.slice(-150),viewAt,chatScroll:$('aiChat').scrollTop,pageScroll:window.scrollY}));}catch{announce('Warning: your browser did not save the lesson progress.',true);}}
+function imageUrl(path){return path.startsWith('assets/')?API+'/media/'+encodeURIComponent(path.slice('assets/'.length)):path;}
+function renderCatalog(){const list=$('lessonList');list.replaceChildren();catalog.forEach((entry,i)=>{const a=document.createElement('a');a.className='lesson-link'+(entry.id===activeId?' selected':'');a.href='?lesson='+encodeURIComponent(entry.id);const marker=document.createElement('span');marker.className='circle';const txt=document.createElement('span');const title=document.createElement('strong');title.textContent=entry.title;const lessonNo=document.createElement('span');lessonNo.className='lesson-number';lessonNo.textContent=`Lesson ${String(i+1).padStart(2,'0')}`;txt.appendChild(lessonNo);const sub=document.createElement('small');sub.textContent=entry.module+' · edition '+entry.version;txt.append(title,sub);a.append(marker,txt);list.appendChild(a);});}
+function renderProgress(){if(!lesson)return;const st=signed?.state;const goals=lesson.episodes.flatMap(x=>x.objectives);const mastered=new Set(st?.mastered||[]);const score=goals.filter(x=>mastered.has(x.id)).length;const done=Math.min(st?.ep||0,lesson.episodes.length);$('courseProgressText').textContent=`${score} / ${goals.length} learning goals demonstrated`; $('courseMeter').style.width=(goals.length?Math.round(score/goals.length*100):0)+'%';$('goalCounts').textContent=`${done}/${lesson.episodes.length} topics covered · ${score}/${goals.length} learning goals demonstrated`;const bar=$('goalSegments');bar.replaceChildren();for(const g of goals){const el=document.createElement('span');el.className='seg'+(mastered.has(g.id)?' mastered':'');el.title=g.title+(mastered.has(g.id)?' — demonstrated':' — not demonstrated');bar.appendChild(el);}}
+function renderSlideDots(){const dots=$('slideDots');if(!dots)return;dots.replaceChildren();if(!lesson)return;const total=lesson.episodes.reduce((sum,e)=>sum+e.slides.length,0);for(let n=1;n<=total;n++){const dot=document.createElement('span');dot.className='slide-dot'+(viewAt===n?' active':'')+(viewAt>n?' visited':'');dot.title=`Slide ${n} of ${total}`;dots.appendChild(dot);}dots.setAttribute('aria-label',`Slide ${viewAt||0} of ${total}`);}
+function displaySlide(slide,number,total){viewSlide=slide;const image=imageUrl(slide.image);$('slideLabel').textContent=slide.title;$('slideViewer').replaceChildren();const img=document.createElement('img');img.src=image;img.alt=slide.title;img.onerror=()=>{img.replaceWith(Object.assign(document.createElement('div'),{className:'slide-empty',textContent:'This slide image is not available. The approved lecture remains available below in AI Instructor.'}));};$('slideViewer').appendChild(img);$('enlargeBtn').hidden=false;$('slideCount').textContent=`Slide ${number} of ${total}`;renderSlideDots();}
+function chatLine(role,text){
+ const d=document.createElement('div');d.className='chat-message '+(role==='student'?'student':role==='lecture'?'lecture':'ai');
+ const name=document.createElement('div');name.className='who';name.textContent=role==='student'?'You':'AI Instructor';d.append(name);
+ const body=document.createElement('div');body.className=role==='lecture'?'lecture-body':'';body.textContent=text;body.setAttribute('dir','auto');d.appendChild(body);
+ $('aiChat').appendChild(d);
+}
+// Keep every lecture and conversation in saved history, but display only the current slide's lecture/Q&A.
+function assignTranscriptContexts(){
+ let slideId=null,section='intro',changed=false;
+ for(const r of records){
+  if(r.type==='slide'){slideId=r.id;section='slide';}
+  if(r.type==='final-question')section='final';
+  if(r.type==='chat'&&!r.slide_id&&!r.context){
+   if(section==='final')r.context='final';else if(slideId)r.slide_id=slideId;else r.context='intro';changed=true;
+  }
+ }
+ return changed;
+}
+function renderChat(){
+ const log=$('aiChat');log.replaceChildren();
+ const st=signed?.state;const finalMode=['final','ended'].includes(st?.phase)||(st?.phase==='complete'&&lesson?.hasFinal);
+ if(finalMode){
+  const relevant=records.filter(r=>r.type==='chat'&&r.context==='final');
+  if(!relevant.length)chatLine('ai','Read the Final practical scenario above. I can explain the task or show an example; you may also finish without passing.');
+  else for(const r of relevant)chatLine(r.role,r.text);
+  return;
+ }
+ const slideId=viewSlide?.id;
+ const relevant=records.filter(r=>slideId&&(r.type==='lecture'&&r.slide_id===slideId || r.type==='chat'&&r.slide_id===slideId));
+ if(!relevant.length){chatLine('ai','Open the first slide to begin its approved English lecture. Ask questions after reading it.');return;}
+ // A slide's approved lecture appears once; other slides' lectures never accumulate on this screen.
+ let lectureShown=false;
+ for(const r of relevant){if(r.type==='lecture'){if(!lectureShown){chatLine('lecture',r.text);lectureShown=true;}}else if(r.type==='chat')chatLine(r.role,r.text);}
+}
+function appendRecord(r){records.push(r);renderChat();save();}
+function focusTeachingTarget(target){
+ if(!target)return;
+ requestAnimationFrame(()=>requestAnimationFrame(()=>{
+  const top=Math.max(0,window.scrollY+target.getBoundingClientRect().top-12);
+  window.scrollTo({top,behavior:'instant'});
+ }));
+}
+function renderQuizHistory(){
+ const panel=$('quizReviewPanel'),list=$('quizReviewList');list.replaceChildren();
+ const st=signed?.state;
+ if(!st||!lesson){panel.hidden=true;return;}
+ const entries=new Map();
+ for(const r of records){
+  if(r.type==='quiz'&&Number.isInteger(r.ep))entries.set(r.ep,{ep:r.ep,quiz:r.quiz});
+  if(r.type==='quiz-result'&&Number.isInteger(r.ep)){
+   const prior=entries.get(r.ep)||{ep:r.ep,quiz:r.quiz};entries.set(r.ep,{...prior,selected:r.selected||null,assessment:r.assessment,feedback:r.feedback||''});
+  }
+ }
+ const past=[...entries.values()].filter(x=>x.quiz&&x.ep<st.ep).sort((a,b)=>a.ep-b.ep);
+ panel.hidden=!past.length;if(!past.length)return;
+ past.forEach((entry,index)=>{
+  const details=document.createElement('details');details.open=index===past.length-1;
+  const heading=document.createElement('summary');
+  const status=entry.assessment==='pass'?'demonstrated':entry.assessment==='skipped'?'skipped':entry.assessment==='not_demonstrated'?'not demonstrated':'completed before this update';
+  heading.textContent=`Knowledge check ${entry.ep+1} · ${status}`;details.appendChild(heading);
+  const body=document.createElement('div');body.className='quiz-review-body';
+  const q=document.createElement('p');q.className='quiz-review-question';q.textContent=entry.quiz.question;body.appendChild(q);
+  for(const letter of 'ABCD'){
+   const choice=document.createElement('div');choice.className='quiz-review-choice'+(entry.selected===letter?' chosen':'');
+   const label=document.createElement('strong');label.textContent=letter+'.';const option=document.createElement('span');option.textContent=entry.quiz.choices?.[letter]||'';choice.append(label,option);body.appendChild(choice);
+  }
+  const note=document.createElement('p');note.className='quiz-review-feedback';
+  note.textContent=entry.selected?`Your answer: ${entry.selected}. Result: ${status}.`:'This check was completed before v9.2.5; the original question is preserved, but the selected letter was not recorded by the previous interface.';
+  body.appendChild(note);if(entry.feedback){const explanation=document.createElement('p');explanation.className='quiz-review-explanation';explanation.textContent=entry.feedback;body.appendChild(explanation);}details.appendChild(body);list.appendChild(details);
+ });
+}
+// Upgrade already saved v9.2 sessions without changing their signed student state.
+function restoreLectureMessages(){
+ if(!lesson?.episodes?.length)return false;
+ const sources=new Map(lesson.episodes.flatMap(e=>e.slides).map(slide=>[slide.id,slide]));
+ let changed=false;const upgraded=[];
+ for(let i=0;i<records.length;i++){
+  const r=records[i];upgraded.push(r);
+  if(r.type==='slide'&&sources.has(r.id)&&!(records[i+1]?.type==='lecture'&&records[i+1]?.slide_id===r.id)){
+   upgraded.push({type:'lecture',slide_id:r.id,text:sources.get(r.id).lecture});changed=true;
+  }
+ }
+ if(changed)records=upgraded.slice(-150);
+ return assignTranscriptContexts()||changed;
+}
+function renderQuiz(){
+ const st=signed?.state;const active=!!st&&['quiz','final'].includes(st.phase);
+ const panel=$('assessmentPanel');panel.hidden=!active;
+ if(!st||!lesson)return;
+ // Move the final task BEFORE the instructor dialogue. Knowledge checks remain AFTER the lecture.
+ const columns=document.querySelector('.columns'),ai=$('aiPanel');
+ if(st.phase==='final'){if(panel.nextElementSibling!==ai)columns.insertBefore(panel,ai);}
+ else if(panel.previousElementSibling!==ai)columns.insertBefore(panel,ai.nextSibling);
+ $('finalHelpBtn').hidden=st.phase!=='final';$('finishWithoutPassBtn').hidden=st.phase!=='final';
+ if(st.phase==='final'){
+  $('assessmentLabel').textContent='FINAL PRACTICAL SCENARIO';$('assessmentQuestion').textContent=lesson.finalTitle||'Final practical scenario';$('quizChoices').replaceChildren();$('skipBtn').hidden=true;
+  $('assessmentHint').textContent='Explain the scenario in AI Instructor below. Need help? Use Explain this task. You can finish without passing; this never awards credit.';
+  const q=records.filter(x=>x.type==='final-question').slice(-1)[0];if(q)$('assessmentQuestion').textContent=q.text;return;
+ }
+ $('assessmentLabel').textContent='KNOWLEDGE CHECK · Select one answer';$('skipBtn').hidden=false;
+ const quiz=records.filter(x=>x.type==='quiz'&&x.ep===st.ep).slice(-1)[0]?.quiz;
+ if(!quiz){$('assessmentQuestion').textContent='Loading active Knowledge check…';$('quizChoices').replaceChildren();return;}
+ $('assessmentQuestion').textContent=quiz.question;$('assessmentHint').textContent='Choose a single answer. You can ask for a general explanation without revealing the answer.';
+ const holder=$('quizChoices');holder.replaceChildren();for(const k of 'ABCD'){
+  const b=document.createElement('button');b.type='button';b.className='choice';const id=document.createElement('span');id.className='letter';id.textContent=k;
+  const tx=document.createElement('span');tx.textContent=quiz.choices[k];b.append(id,tx);b.disabled=busy;b.onclick=()=>run('answer',k);holder.appendChild(b);
+ }
+}
+function render(){if(!lesson)return;const st=signed?.state;const index=Math.min(st?.ep||0,lesson.episodes.length-1);const episode=lesson.episodes[index];$('episodeStep').textContent=st?.phase==='ended'?'LESSON FINISHED · NOT DEMONSTRATED':st?.phase==='complete'?(lesson.hasFinal?'FINAL PRACTICAL SCENARIO':'LESSON COMPLETE'):st?.phase==='final'?'FINAL PRACTICAL SCENARIO':`TEACHING EPISODE ${index+1} / ${lesson.episodes.length}`;$('episodeTitle').textContent=st?.phase==='ended'?'Lesson finished without passing':st?.phase==='complete'?'Material finished':st?.phase==='final'?'Final practical scenario':episode?.title||'Ready';$('lessonTitle').textContent=viewSlide?.title||lesson.title;const totalSlides=lesson.episodes.reduce((n,e)=>n+e.slides.length,0);$('moduleTitle').textContent=viewSlide?`Lesson ${String(catalog.findIndex(x=>x.id===lesson.id)+1).padStart(2,'0')} · Slide ${viewAt} of ${totalSlides}`:`Lesson ${String(catalog.findIndex(x=>x.id===lesson.id)+1).padStart(2,'0')} · ${lesson.module}`;const goalList=$('learningGoalList');goalList.replaceChildren();(episode?.objectives||[]).forEach(g=>{const li=document.createElement('li');li.textContent=g.title;goalList.appendChild(li)});$('sidebarModule').textContent=lesson.module;$('lessonDescription').textContent=lesson.description;$('topLesson').textContent=lesson.title;$('heroMeta').textContent=`${lesson.episodes.length} teaching episodes · ${lesson.episodes.reduce((n,e)=>n+e.slides.length,0)} source slides · Published edition v${lesson.version}`;
+ $('versionText').textContent=`Content edition v${lesson.version}`;$('nextBtn').disabled=busy||!access||!st||st.phase!=='teaching';$('previousBtn').disabled=busy||!access||!st||!Number.isInteger(viewAt)||viewAt<=0;$('chatText').disabled=busy||!access||!st||['complete','ended'].includes(st.phase);$('sendBtn').disabled=$('chatText').disabled;$('restartBtn').disabled=busy||!access||!st;$('skipBtn').disabled=busy;
+ $('aiStatus').textContent=st?.phase==='ended'?'Finished without passing':st?.phase==='complete'?'Lesson completed':st?.phase==='final'?'Final scenario · help available':st?.phase==='quiz'?'Knowledge check open':st?'Delivering lecture':'Ready when you sign in';renderProgress();renderQuiz();renderQuizHistory();
+ $('completionPanel').hidden=!['complete','ended'].includes(st?.phase);if(st?.phase==='complete')$('completionPanel').textContent=lesson.hasFinal?'MATERIAL FINISHED · Final scenario: demonstrated':'MATERIAL FINISHED · All Knowledge checks completed';
+ if(st?.phase==='ended')$('completionPanel').textContent='LESSON FINISHED · Final scenario not demonstrated. Your partial progress is saved. No passing result has been awarded.';
+ $('chooseCurrentBtn').hidden=!(publishedVersion>lesson.version);renderSlideDots();
+}
+async function selectLesson(id){
+ activeId=id;const saved=restore(id),entry=catalog.find(e=>e.id===id);publishedVersion=entry.version;
+ // Before pilot authentication, only public catalog metadata is exposed.
+ lesson={id,version:saved?.version||entry.version,title:entry.title,module:entry.module,
+  description:'Sign in to open the approved lecture and assessment.',episodes:[],finalTitle:'Final practical scenario'};
+ records=saved?.records||[];signed=saved?{state:saved.state,seal:saved.seal}:null;
+ viewAt=Number.isInteger(saved?.viewAt)?saved.viewAt:0;
+ renderCatalog();render();
+ if(saved)announce(`A saved attempt was found for edition v${saved.version}. Enter the access code to resume the original edition.`);
+ else announce('Ready. Enter the student access code to load this published lesson.');
+}
+async function openAuthenticatedLesson(){
+ const saved=restore(activeId);const pinned=saved?.version||publishedVersion;
+ lesson=await api(`/lesson?id=${encodeURIComponent(activeId)}&version=${pinned}`);
+ records=saved?.records||[];signed=saved?{state:saved.state,seal:saved.seal}:null;
+ viewAt=Number.isInteger(saved?.viewAt)?saved.viewAt:0;
+ const upgraded=restoreLectureMessages();
+ const all=lesson.episodes.flatMap(e=>e.slides),last=records.filter(r=>r.type==='slide').slice(-1)[0];
+ if(last){const match=all.find(x=>x.id===last.id);if(match)displaySlide(match,all.indexOf(match)+1,all.length);}
+ renderChat();render();
+ if(saved&&!upgraded)$('aiChat').scrollTop=saved.chatScroll||0;
+ if(upgraded)save();
+}
+async function boot(){if(localStorage.getItem(LEGACY_KEY)||localStorage.getItem(LEGACY_KEY+'-backup'))$('legacyBanner').hidden=false;try{const c=await api('/catalog');catalog=c.lessons||[];if(!catalog.length)throw new Error('No published lessons');const query=new URLSearchParams(location.search).get('lesson');const id=catalog.some(x=>x.id===query)?query:catalog[0].id;await selectLesson(id);}catch(e){announce(e.message+' · Existing v9.1 attempts remain available from lesson-v91.html.',true);}}
+function syncSigned(resp){signed={state:resp.state,seal:resp.seal};}
+async function run(action,message=''){
+ if(busy||!lesson||!access)return false;
+ touchSession();
+ const beforePhase=signed?.state?.phase,beforeEp=signed?.state?.ep;
+ const activeQuiz=['answer','skip'].includes(action)?records.filter(r=>r.type==='quiz'&&r.ep===beforeEp).slice(-1)[0]?.quiz:null;
+ busy=true;render();try{
+  const body={action,message,lesson_id:lesson.id,version:lesson.version,...(action==='start'?{}:{state:signed?.state,seal:signed?.seal})};
+  const res=await api('/learn',{method:'POST',body});syncSigned(res);
+  if(action==='next'&&res.slideContent){
+   const all=lesson.episodes.flatMap(e=>e.slides),slide=res.slideContent;
+   appendRecord({type:'slide',id:slide.id});viewAt=all.findIndex(s=>s.id===slide.id)+1;displaySlide(slide,viewAt,all.length);
+   appendRecord({type:'lecture',slide_id:slide.id,text:slide.lecture});
+  }
+  if(res.quiz)appendRecord({type:'quiz',quiz:res.quiz,ep:res.state.ep});
+  if(res.finalQuestion&&!records.some(x=>x.type==='final-question'))appendRecord({type:'final-question',text:res.finalQuestion});
+  if(activeQuiz)appendRecord({type:'quiz-result',ep:beforeEp,quiz:activeQuiz,selected:action==='answer'?message:null,assessment:res.assessment,feedback:res.message||''});
+  if(action==='ask'&&message)appendRecord({type:'chat',role:'student',text:message,context:beforePhase==='final'?'final':null,slide_id:beforePhase==='final'?null:viewSlide?.id||null});
+  if(res.message&&!(action==='resume'&&records.length))appendRecord({type:'chat',role:'instructor',text:res.message,context:['final','ended'].includes(beforePhase)||['final_help','finish'].includes(action)?'final':null,slide_id:['final','ended'].includes(beforePhase)||['final_help','finish'].includes(action)?null:viewSlide?.id||null});
+  if(res.finalStatus==='demonstrated')announce('Final scenario demonstrated. Your result has been saved.');
+  else if(action==='finish')announce('Lesson finished without passing. Partial progress saved; no passing result awarded.');
+  else if(action==='answer')announce(res.assessment==='pass'?'Knowledge check passed. Learning goals recorded.':res.message,res.assessment==='not_demonstrated');
+  else if(action==='skip')announce('Knowledge check skipped; no learning goals were awarded.');
+  else if(action==='next')announce('Slide displayed. Read its approved lecture from AI Instructor below.');
+  save();return true;
+ }catch(e){announce(e.message,true);return false;}finally{
+  busy=false;render();renderChat();
+  if(action==='next'&&viewSlide)focusTeachingTarget($('slideFrame'));
+  else if(['answer','skip'].includes(action)&&signed?.state?.phase==='final')focusTeachingTarget($('assessmentPanel'));
+  else if(action==='finish')focusTeachingTarget($('completionPanel'));
+ }
+}
+$('loginForm').addEventListener('submit',async ev=>{ev.preventDefault();if(busy||!lesson)return;const code=$('accessCode').value.trim();if(!/^[\x20-\x7e]+$/.test(code)){announce('Enter a valid access code.',true);return;}access=code;
+ try{
+  await openAuthenticatedLesson();
+  const action=signed?'resume':'start';const ok=await run(action);
+  if(ok){$('loginBox').hidden=true;document.body.classList.remove('locked');$('accessCode').value='';touchSession();render();announce(signed?.state?.phase==='complete'?'Your completed lesson has been restored.':'Signed in. Open the next slide to begin the approved English lecture.');const saved=restore(activeId);if(saved?.pageScroll)requestAnimationFrame(()=>window.scrollTo(0,saved.pageScroll));}
+  else{access='';document.body.classList.add('locked');}
+ }catch(e){access='';document.body.classList.add('locked');announce(e.message,true);}});
+// v9.2.2: a unified vertically readable workspace on desktop and mobile.
+// Both slide and AI Instructor remain visible; no mobile view-switching mode.
+$('nextBtn').addEventListener('click',()=>run('next'));
+$('skipBtn').addEventListener('click',()=>run('skip'));
+$('finalHelpBtn').addEventListener('click',()=>run('final_help'));
+$('finishWithoutPassBtn').addEventListener('click',()=>{
+ if(confirm('Finish this lesson without passing the Final scenario? Your partial progress will be saved, but no passing result will be awarded.'))run('finish');
+});
+$('previousBtn').addEventListener('click',()=>{if(!lesson||viewAt<=1)return;const all=lesson.episodes.flatMap(e=>e.slides);viewAt--;displaySlide(all[viewAt-1],viewAt,all.length);renderChat();render();save();focusTeachingTarget($('slideFrame'));});
+$('chatForm').addEventListener('submit',ev=>{ev.preventDefault();const input=$('chatText');const msg=input.value.trim();if(msg){input.value='';run('ask',msg);}});
+$('restartBtn').addEventListener('click',()=>{if(!lesson||!confirm('Restart this lesson? Only this v9.2 attempt will be cleared. Earlier v9.1 progress stays untouched.'))return;localStorage.removeItem(stateKey(lesson.id));signed=null;records=[];viewAt=0;viewSlide=null;access='';$('loginBox').hidden=false;document.body.classList.add('locked');$('slideViewer').textContent='Start the lesson to load the first slide.';$('assessmentPanel').hidden=true;$('quizReviewPanel').hidden=true;renderChat();render();announce('This lesson attempt has been reset. Sign in to begin again.');});
+$('chooseCurrentBtn').addEventListener('click',()=>{if(!lesson||!confirm('Start the newest published edition? This replaces the saved local attempt for the current lesson.'))return;localStorage.removeItem(stateKey(lesson.id));location.href='?lesson='+encodeURIComponent(lesson.id);});
+
+// Accessible, functional navigation controls matching the approved desktop mockup.
+const menuPairs=[['helpToggle','helpPopup'],['profileToggle','profilePopup'],['slideMoreBtn','slideMorePopup']];
+function closeMenus(except=''){for(const [buttonId,menuId] of menuPairs){const b=$(buttonId),m=$(menuId);if(!b||!m||menuId===except)continue;m.hidden=true;b.setAttribute('aria-expanded','false');}}
+for(const [buttonId,menuId] of menuPairs){const b=$(buttonId),m=$(menuId);if(!b||!m)continue;b.addEventListener('click',()=>{const open=m.hidden;closeMenus();m.hidden=!open;b.setAttribute('aria-expanded',String(open));});}
+document.addEventListener('click',ev=>{if(!ev.target.closest('.menu-parent'))closeMenus();});
+document.addEventListener('keydown',ev=>{if(ev.key==='Escape')closeMenus();});
+$('jumpToTeacher').addEventListener('click',()=>closeMenus());
+$('copyLessonBtn').addEventListener('click',async()=>{closeMenus();const u=new URL(location.href);if(activeId)u.searchParams.set('lesson',activeId);try{await navigator.clipboard.writeText(u.toString());announce('Lesson link copied.');}catch{announce('Unable to copy automatically. Use your browser address bar.',true);}});
+$('menuRestartBtn').addEventListener('click',()=>{closeMenus();$('restartBtn').click();});
+$('signOutBtn').addEventListener('click',()=>{closeMenus();if(access){save();access='';$('loginBox').hidden=false;document.body.classList.add('locked');render();announce('Signed out. Your learning progress is preserved.');window.scrollTo(0,0);}else{announce('You are not signed in.');}});
+$('enlargeBtn').addEventListener('click',()=>{if(!viewSlide)return;$('dialogImage').src=imageUrl(viewSlide.image);$('imageDialog').hidden=false;$('closeDialog').focus();});$('closeDialog').addEventListener('click',()=>$('imageDialog').hidden=true);document.addEventListener('keydown',ev=>{if(ev.key==='Escape')$('imageDialog').hidden=true;});
+document.addEventListener('pointerdown',touchSession,{passive:true});document.addEventListener('keydown',touchSession);window.addEventListener('beforeunload',save);
+boot();
+</script>
+</body></html>
