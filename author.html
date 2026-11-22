@@ -1,0 +1,249 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#073763"><title>KCS Academy · Course Editor v9.3.2</title>
+<style>
+:root{font:14px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:#162f51;--line:#d9e5f3;--soft:#f2f7ff;--navy:#083663;--ink:#1e3f64;--blue:#256bd5;--green:#24946d}*{box-sizing:border-box}body{margin:0;background:linear-gradient(120deg,#f0f5ff,#eafdff)}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.48;cursor:not-allowed}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #87b3f0;outline-offset:2px}[hidden]{display:none!important}a{text-decoration:none;color:inherit}
+.layout{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:100vh}.sidebar{background:linear-gradient(170deg,#082a53,#06467d);color:#eff8ff;padding:22px 15px;display:flex;flex-direction:column;gap:16px}.logo{background:#fff;padding:12px;border-radius:13px}.logo img{display:block;max-width:100%;height:auto}.side-label{color:#a9d2ef;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.side-card{border:1px solid #a7c7e349;border-radius:12px;padding:15px;background:#ffffff0d}.side-card strong{font-size:17px}.side-card p{font-size:12px;color:#b6d5ed;margin:6px 0}.side-link{font-size:13px;color:#deebfc;text-decoration:underline}.side-foot{margin-top:auto;font-size:11px;color:#b2d2f0}
+.main{padding:28px 30px;max-width:1430px;width:100%;margin:0 auto}.header{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.header .eyebrow{color:var(--blue);text-transform:uppercase;letter-spacing:.13em;font-size:11px;font-weight:900}.header h1{font-size:clamp(25px,3vw,36px);margin:3px 0 8px;letter-spacing:-1px}.header p{margin:0;color:#6883a2}.version{border-radius:30px;border:1px solid #c7d9ec;padding:7px 13px;font-size:11px;color:#597ba3;background:#fff;font-weight:800}.panel{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 38px #204f8511;padding:19px 20px;margin-top:19px}.panel h2{font-size:20px;margin:0 0 13px}.access{display:flex;align-items:end;gap:11px}.access>*:first-child{flex:1}.tiny{color:#6d86a6;font-size:12px}.field{display:flex;flex-direction:column;gap:6px;margin:10px 0}.field label{font-size:12px;font-weight:800;color:#365d88}.field input,.field textarea,.field select{border:1px solid #cddceb;background:#fff;border-radius:9px;color:#143455;padding:10px 12px;width:100%;min-width:0}.field textarea{min-height:105px;resize:vertical;line-height:1.65}.field textarea.lecture{min-height:250px}.field input:focus,.field textarea:focus{border-color:#4b8ddb}.grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.primary{background:linear-gradient(105deg,#2366c5,#105b98);color:#fff;border:0;padding:10px 17px;border-radius:10px;font-weight:800}.secondary{border:1px solid #c7d9ed;background:#fff;padding:9px 14px;border-radius:10px;color:#2c5d93;font-weight:760}.danger{border-color:#efd4d5;color:#a14343}.toolbar{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:13px 0}.status{border-radius:11px;padding:12px 15px;background:#edf8f2;color:#237653;border:1px solid #c9e9d8;margin-top:14px;font-size:13px;font-weight:690}.status.error{background:#fff4f1;border-color:#f2d2cd;color:#9e3834}.status.warning{background:#fff9e9;border-color:#f3e3be;color:#936927}.pill{font-size:11px;font-weight:800;color:#366aaf;background:#eff5ff;border-radius:30px;padding:6px 10px}.episode{border:1px solid #d4e4f4;border-radius:15px;margin:16px 0;background:#fafcff;overflow:hidden}.episode summary{cursor:pointer;display:flex;justify-content:space-between;gap:8px;align-items:center;padding:13px 16px;background:#edf4ff;color:#1e4f8c;font-size:15px;font-weight:800}.episode-body{padding:17px}.module-head{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #e1eaf4;margin:22px 0 12px;padding-bottom:8px}.module-head h3{margin:0;font-size:16px}.slide-card{border:1px solid #dce8f4;border-radius:12px;background:#fff;padding:14px;margin:13px 0}.slide-card img{max-width:360px;width:100%;max-height:160px;object-fit:contain;border:1px solid #e4ebf3;border-radius:9px;background:#fafcfe}.slide-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.slide-head h4{margin:0}.small{font-size:12px;padding:7px 10px}.goal-row,.criterion-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:end}.choice-row{display:grid;grid-template-columns:25px minmax(0,1fr);gap:8px;align-items:center}.quiz{padding:16px;border-radius:12px;background:#f1f7ff;border:1px solid #d7e5f5}.approval{padding:12px;border:1px solid #e5d9bd;background:#fffbef;border-radius:9px;display:flex;align-items:center;gap:9px;font-weight:770;color:#865b22;margin-top:12px}.approval input{width:19px;height:19px;accent-color:var(--green)}.preview{background:#f8fbff;border:1px solid #dbe5f3;padding:14px;border-radius:12px;white-space:pre-wrap;margin-top:14px;max-height:430px;overflow:auto}.badge{border-radius:30px;padding:5px 9px;background:#e7f7ef;color:#22815b;font-size:11px;font-weight:800}.subtitle{color:#6986a8;font-size:12px}.lesson-select{min-width:260px}.muted{color:#7890ac}.error-text{color:#a73536;font-size:12px}hr{border:0;border-top:1px solid #e4edf8;margin:20px 0}
+@media(max-width:860px){.layout{grid-template-columns:1fr}.sidebar{gap:8px}.side-foot{display:none}.main{padding:19px 14px}.grid{grid-template-columns:1fr}.access{flex-wrap:wrap}.access>*:first-child{flex-basis:100%}}/* v9.2.1: editor readability and touch targets. */
+:root{font-size:16px;line-height:1.6}
+.side-card p,.side-link,.tiny,.subtitle{font-size:14px}
+.field label{font-size:14px}
+.field input,.field textarea,.field select{font-size:16px;min-height:46px}
+.field textarea.lecture{font-size:16px;line-height:1.7;min-height:260px}
+.primary,.secondary{min-height:44px;font-size:15px}
+.episode summary{font-size:17px}
+@media(max-width:860px){.sidebar{padding:12px;flex-direction:row;align-items:center;flex-wrap:wrap}.logo{width:190px;padding:6px}.side-card,.side-label{display:none}.side-link{font-size:15px}.main{padding:15px}.panel{padding:14px}.header h1{font-size:30px}}
+@media(max-width:520px){.layout{grid-template-columns:minmax(0,1fr);width:100%}.sidebar,.main,.panel,.toolbar,.module-head{min-width:0}.toolbar button{flex:1 1 100%;white-space:normal;overflow-wrap:anywhere}.sidebar{gap:8px}.main{padding:10px}.panel{margin-top:12px;padding:12px}.header{flex-wrap:wrap;gap:8px}.toolbar{gap:8px}.toolbar button{flex:1}.lesson-select{min-width:0;width:100%}.module-head{flex-wrap:wrap}.episode-body{padding:10px}.grid{grid-template-columns:1fr}.goal-row,.criterion-row{grid-template-columns:1fr}.field textarea.lecture{min-height:300px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+/* v9.3.0: private course folders; preserve the existing lesson editor layout. */
+.course-list{display:grid;gap:9px;margin:12px 0}.course-lesson{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:9px;padding:10px 12px;background:#f8fbff}.course-lesson>span{min-width:0;overflow-wrap:anywhere}.course-lesson .secondary{flex:none}.course-form{padding:13px 15px;margin:12px 0;border:1px solid #d5e3f3;border-radius:12px;background:#f5f9ff}.course-description{margin:4px 0 12px;white-space:pre-wrap}.course-private{color:#70571f;background:#fff7df;padding:10px 12px;border:1px solid #f0ddb0;border-radius:8px;margin:10px 0;font-size:13px}.course-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.course-module-block{margin:4px 0 9px}.course-module-label{font-size:13px;font-weight:800;color:#365d88;margin:5px 0 8px;border-bottom:1px solid #e3edf7;padding:6px 0}.course-module-lessons{display:grid;gap:9px;padding-left:12px}.course-lesson{min-width:0}
+@media(max-width:520px){.course-lesson{align-items:flex-start;flex-direction:column}.course-lesson .secondary{width:100%}.course-module-lessons{padding-left:4px}}
+</style></head>
+<body><div class="layout"><aside class="sidebar"><div class="logo"><img src="KCS_logo.png" width="677" height="157" alt="Knowledge Club Slovakia"></div><div class="side-label">AI Learning Portal</div><div class="side-card"><strong>Course Editor</strong><p>Create, edit, preview, approve and publish training materials without changing code.</p></div><a class="side-link" href="lesson.html">← Open student workspace</a><div class="side-foot">Content is stored in private Cloudflare Workers KV and published as immutable editions. Keys to assessments never reach students.</div></aside>
+<main class="main"><div class="header"><div><div class="eyebrow">KCS Academy · Instructor workspace</div><h1>Course Editor</h1><p>Webex Contact Center · Author-controlled lessons and assessments</p></div><span class="version">EDITOR v9.3.2</span></div>
+<div class="panel" id="gate"><h2>Instructor access</h2><form class="access" id="loginForm"><div class="field"><label for="authorCode">Separate author access code (KCS_AUTHOR_CODE)</label><input type="password" id="authorCode" autocomplete="off" required placeholder="Enter your author code"></div><button type="submit" class="primary" id="connectBtn">Open Course Editor</button></form><p class="tiny">Do not use or reuse the student's pilot code. The author code is never stored in localStorage.</p></div>
+<div class="panel" id="coursesPanel" hidden>
+  <div class="module-head" style="margin-top:0"><h2 style="margin:0">Courses</h2><span class="pill">Draft → Review → Publish course</span></div>
+  <div class="toolbar"><select id="courseSelect" class="lesson-select" aria-label="Choose a course"></select><button type="button" class="primary" id="newCourseBtn">+ Create course</button></div>
+  <form id="courseCreateForm" class="course-form" hidden>
+    <h3 style="margin:0 0 12px">New course</h3>
+    <div class="field"><label for="courseTitle">Course title</label><input id="courseTitle" type="text" maxlength="180" minlength="3" required placeholder="e.g. Webex Contact Center Fundamentals"></div>
+    <div class="field"><label for="courseDescription">Course description</label><textarea id="courseDescription" maxlength="900" rows="3" placeholder="What will students learn in this course?"></textarea></div>
+    <div class="toolbar"><button type="submit" class="primary" id="courseCreateSubmit">Create course</button><button type="button" class="secondary" id="courseCreateCancel">Cancel</button></div>
+  </form>
+  <div id="courseDetails" hidden>
+    <div class="course-heading"><h3 id="courseShownTitle" style="margin:5px 0"></h3><span class="badge" id="coursePublishStatus">Not published</span></div>
+    <p id="courseShownDescription" class="course-description tiny"></p>
+    <div id="courseLessons" class="course-list"></div>
+    <div class="toolbar"><button type="button" class="primary" id="newCourseLessonBtn">+ Add lesson to this course</button><button type="button" class="primary" id="publishCourseBtn">Publish reviewed course</button><a id="courseStudentLink" class="secondary" href="lesson.html" target="_blank" rel="noopener" hidden>Open student course</a></div>
+    <form id="courseLessonForm" class="course-form" hidden>
+      <div class="field"><label for="courseLessonTitle">New lesson title</label><input id="courseLessonTitle" type="text" maxlength="180" minlength="3" required placeholder="e.g. Entry Points and Voice Flows"></div>
+      <div class="toolbar"><button type="submit" class="primary" id="courseLessonSubmit">Create lesson draft</button><button type="button" class="secondary" id="courseLessonCancel">Cancel</button></div>
+    </form>
+    <p class="course-private">New courses remain private until you publish the complete reviewed course. All lesson drafts must be saved and their Knowledge checks approved first. Publishing creates immutable editions; the existing course and student attempts are preserved.</p>
+  </div>
+  <p class="tiny">Create the course, add its lessons, save and approve each assessment, then publish the reviewed course to the student catalog.</p>
+</div>
+<div class="panel" id="manager" hidden><div class="module-head" style="margin-top:0"><h2 style="margin:0">Standalone lessons</h2><span class="pill">Existing lesson workflow</span></div><div class="toolbar"><select class="lesson-select" id="lessonSelect" aria-label="Choose a lesson"></select><button type="button" class="secondary" id="loadBtn">Open lesson</button><button type="button" class="primary" id="newBtn">+ Create lesson</button></div><div class="tiny" id="standaloneModule"></div><div class="tiny">Published lessons appear to students automatically. Drafts remain private until publication.</div></div>
+<div class="panel" id="editor" hidden><div class="module-head" style="margin-top:0"><div><h2 id="editingTitle" style="margin:0">Edit lesson</h2><div class="subtitle" id="editionInfo">Draft</div></div><span class="badge" id="saveState">Loaded</span></div>
+ <p class="course-private" id="coursePublishGuard" hidden>This lesson belongs to a course. Save and review it here; publish all course lessons together using Publish reviewed course above.</p>
+ <div class="toolbar"><button type="button" class="primary" id="saveBtn">Save draft</button><button type="button" class="secondary" id="previewBtn">Preview content</button><button type="button" class="primary" id="publishBtn">Publish reviewed edition</button></div>
+ <div id="fields"></div>
+ <div class="toolbar"><button type="button" class="primary" id="saveBottom">Save draft</button><button type="button" class="secondary" id="previewBottom">Preview content</button><button type="button" class="primary" id="publishBottom">Publish reviewed edition</button></div>
+ <div id="previewArea" hidden></div>
+</div>
+<div class="status" id="notice" role="status">Enter the author code to begin. No course content has been changed.</div></main></div>
+<script>
+'use strict';
+const API='https://kcs-academy-api.dmytrobenda.workers.dev/api/v92';const $=id=>document.getElementById(id);
+let code='',selected='',draft=null,registry=[],draftIds=[],changed=false,lock=false;
+let courses=[],activeCourse='',courseLessonNames={},courseBusy=false;
+const clean=x=>String(x??'');
+function announce(t,kind='ok'){$('notice').textContent=t;$('notice').className='status'+(kind==='ok'?'':' '+kind);}
+function markDirty() {changed=true;$('saveState').textContent='Unsaved changes';$('saveState').style.background='#fff2df';}
+async function api(path,method='GET',body=null,raw=false,contentType='application/json'){
+ const headers={'X-KCS-Author':code};if(body)headers['Content-Type']=contentType;
+ const response=await fetch(API+path,{method,headers,body:body?(raw?body:JSON.stringify(body)):undefined,cache:'no-store'});
+ const result=await response.json().catch(()=>null);if(!response.ok)throw new Error(result?.error||`Course Editor unavailable (${response.status})`);return result;
+}
+function node(tag,attrs={},text){const x=document.createElement(tag);for(const [k,v] of Object.entries(attrs)){if(k==='class')x.className=v;else if(k==='type')x.type=v;else if(k==='title')x.title=v;else x.setAttribute(k,v);}if(text!==undefined)x.textContent=text;return x;}
+function field(parent,label,value,onChange,type='input',opts={}){
+ const wrap=node('div',{class:'field'}),l=node('label',{},label),x=node(type==='textarea'?'textarea':type==='select'?'select':'input');
+ if(type==='input')x.type=opts.inputType||'text';if(type==='textarea'){x.rows=opts.rows||3;if(opts.lecture)x.className='lecture';}
+ if(type==='select'){for(const it of opts.options||[]){const o=node('option');o.value=it;o.textContent=it;x.appendChild(o);}}
+ x.value=value??'';x.addEventListener('input',()=>{onChange(x.value);markDirty();});x.addEventListener('change',()=>{onChange(x.value);markDirty();});wrap.append(l,x);parent.appendChild(wrap);return x;
+}
+function button(parent,label,onClick,cls='secondary small'){const b=node('button',{type:'button',class:cls},label);b.addEventListener('click',onClick);parent.appendChild(b);return b;}
+function row(parent,cls='toolbar'){const r=node('div',{class:cls});parent.appendChild(r);return r;}
+function slug(label,existing=[]){let s=(label||'item').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');if(!/^[a-z]/.test(s))s='item-'+s;s=s.slice(0,32)||'item';let id=s,n=2;while(existing.includes(id))id=s+'-'+n++;return id;}
+function renderStandaloneModule(){
+ const id=$('lessonSelect').value;
+ const published=registry.find(p=>p.id===id);
+ const moduleTitle=published?.module||(selected===id?draft?.content?.module:'');
+ $('standaloneModule').textContent=moduleTitle?'Module: '+moduleTitle:(id?'Module: open the draft to view or edit its module.':'No standalone lessons yet.');
+}
+function renderStandaloneLessons(){
+ const linked=new Set(courses.flatMap(c=>c.lesson_ids||[]));
+ const select=$('lessonSelect'),previous=select.value;select.replaceChildren();
+ for(const p of registry){if(linked.has(p.id))continue;const o=node('option');o.value=p.id;o.textContent=p.title+' · published v'+p.version;select.appendChild(o);}
+ for(const id of draftIds){if(linked.has(id))continue;const o=node('option');o.value=id;o.textContent=id+' · unpublished draft';select.appendChild(o);}
+ const wanted=selected&&[...select.options].some(x=>x.value===selected)?selected:previous;
+ if(wanted&&[...select.options].some(x=>x.value===wanted))select.value=wanted;
+ renderStandaloneModule();
+}
+async function listLessons(){const res=await api('/admin/list');registry=res.lessons||[];draftIds=res.drafts||[];renderStandaloneLessons();}
+
+function courseForLesson(id){return courses.find(c=>Array.isArray(c.lesson_ids)&&c.lesson_ids.includes(id));}
+function syncCoursePublishGuard(){
+ const course=courseForLesson(selected),guard=$('coursePublishGuard');
+ guard.hidden=!course;
+ if(course)guard.textContent=`This lesson belongs to “${course.title}”. Save the lesson draft here, then use Publish reviewed course in the Courses section to publish all its lessons together.`;
+ for(const id of ['publishBtn','publishBottom'])$(id).disabled=!!course;
+}
+async function listCourses(){
+ const data=await api('/admin/courses');courses=Array.isArray(data.courses)?data.courses:[];
+ if(!courses.some(c=>c.id===activeCourse))activeCourse=courses[0]?.id||'';
+ const ids=[...new Set(courses.flatMap(c=>c.lesson_ids||[]))];
+ const summaries=await Promise.all(ids.map(async id=>{try{const r=await api('/admin/load?id='+encodeURIComponent(id));return [id,{title:r.draft?.content?.title||id,module:r.draft?.content?.module||''}];}catch{return [id,{title:id,module:''}];}}));
+ courseLessonNames=Object.fromEntries(summaries);
+ $('coursesPanel').hidden=false;renderStandaloneLessons();renderCourses();
+}
+function renderCourses(){
+ const select=$('courseSelect');select.replaceChildren();
+ if(!courses.length){const option=node('option',{},'No courses yet');option.value='';select.appendChild(option);select.disabled=true;}
+ else{select.disabled=false;for(const c of courses){const option=node('option',{},c.title);option.value=c.id;select.appendChild(option);}select.value=activeCourse;}
+ const course=courses.find(c=>c.id===activeCourse),detail=$('courseDetails');detail.hidden=!course;
+ if(!course)return;
+ $('courseShownTitle').textContent=course.title;$('courseShownDescription').textContent=course.description||'No description yet.';
+ $('coursePublishStatus').textContent=course.published_version?'Published course v'+course.published_version:'Not published';
+ const link=$('courseStudentLink');link.hidden=!course.published_version;link.href='lesson.html?course='+encodeURIComponent(course.id);
+ const area=$('courseLessons');area.replaceChildren();
+ if(!course.lesson_ids?.length){area.appendChild(node('p',{class:'tiny'},'No lessons yet. Add the first lesson below.'));$('publishCourseBtn').disabled=true;return;}
+ $('publishCourseBtn').disabled=false;
+ let currentModule=null,group=null;
+ for(const id of course.lesson_ids){
+  const summary=courseLessonNames[id]||{title:id,module:''};
+  const moduleTitle=summary.module?.trim()||'Module not assigned';
+  // Preserve lesson order exactly as stored; a new header marks each module transition.
+  if(moduleTitle!==currentModule){
+   currentModule=moduleTitle;
+   const block=row(area,'course-module-block');
+   block.appendChild(node('h4',{class:'course-module-label'},'Module: '+moduleTitle));
+   group=row(block,'course-module-lessons');
+  }
+  const item=row(group,'course-lesson');item.appendChild(node('span',{},summary.title||id));
+  button(item,'Open lesson',()=>{if(changed&&!confirm('Discard unsaved lesson edits?'))return;openLesson(id).catch(e=>announce(e.message,'error'));},'secondary small');
+ }
+}
+async function openLesson(id){
+ if(!id)return;
+ const res=await api('/admin/load?id='+encodeURIComponent(id));
+ if(!res.draft?.content)throw new Error('Lesson draft was not returned by the server.');
+ selected=id;draft=res.draft;changed=false;
+ $('editor').hidden=false;$('previewArea').hidden=true;
+ $('editionInfo').textContent=`Lesson ID: ${id} · published edition ${res.publishedVersion||'not yet'} · draft generation ${draft.generation}`;
+ render();renderStandaloneModule();
+ // The editor is below Courses and Standalone lessons. Without scrolling, Open lesson
+ // successfully loaded the fields but appeared to do nothing to the instructor.
+ $('editor').scrollIntoView({behavior:'smooth',block:'start'});
+ $('editingTitle').setAttribute('tabindex','-1');$('editingTitle').focus({preventScroll:true});
+ announce('Lesson opened. Changes are saved only when you press Save draft.');
+}
+function render(){if(!draft)return;const doc=draft.content,root=$('fields');root.replaceChildren();$('editingTitle').textContent=doc.title;$('saveState').textContent=changed?'Unsaved changes':'Draft loaded';$('saveState').style.background=changed?'#fff2df':'#e7f7ef';syncCoursePublishGuard();
+ const meta=node('section');root.appendChild(meta);const mh=row(meta,'module-head');mh.appendChild(node('h3',{},'Lesson identity'));
+ field(meta,'Lesson title',doc.title,v=>{doc.title=v;$('editingTitle').textContent=v});field(meta,'Module title',doc.module,v=>doc.module=v);field(meta,'Lesson description',doc.description,v=>doc.description=v,'textarea');
+ const heading=row(root,'module-head');heading.appendChild(node('h3',{},`Teaching episodes (${doc.episodes.length})`));button(heading,'+ Add episode',()=>{if(doc.episodes.length>=12)return announce('Maximum 12 episodes','error');const id=slug('episode-'+(doc.episodes.length+1),doc.episodes.map(x=>x.id));const ep={id,title:'New episode',objectives:[{id:slug('goal-'+id,doc.episodes.flatMap(x=>x.objectives.map(g=>g.id))),title:'New learning goal'}],slides:[{id:slug('slide-'+id,doc.episodes.flatMap(x=>x.slides.map(s=>s.id))),title:'New slide',image:'slides/04-overview.png',lecture:'Write the approved English lecture here.'}],quiz:{question:'Write an approved question',choices:{A:'Choice A',B:'Choice B',C:'Choice C',D:'Choice D'},correct:'A',reason:'Provide verified answer explanation',reviewed:false}};doc.episodes.push(ep);markDirty();render();});
+ doc.episodes.forEach((ep,ei)=>{
+  const details=node('details',{class:'episode'});details.open=true;root.appendChild(details);const summary=node('summary',{},`Episode ${ei+1} · ${ep.title}`);details.appendChild(summary);const body=node('div',{class:'episode-body'});details.appendChild(body);
+  const erow=row(body);button(erow,'Move episode up',()=>{if(ei===0)return;[doc.episodes[ei-1],doc.episodes[ei]]=[doc.episodes[ei],doc.episodes[ei-1]];markDirty();render();});button(erow,'Move episode down',()=>{if(ei===doc.episodes.length-1)return;[doc.episodes[ei+1],doc.episodes[ei]]=[doc.episodes[ei],doc.episodes[ei+1]];markDirty();render();});button(erow,'Remove episode',()=>{if(doc.episodes.length<=1)return announce('At least one episode is required','error');if(!confirm('Remove this episode and its slides, goals, and assessment?'))return;doc.episodes.splice(ei,1);markDirty();render();},'secondary small danger');
+  field(body,'Episode title',ep.title,v=>{ep.title=v;summary.textContent=`Episode ${ei+1} · ${v}`});
+  const gh=row(body,'module-head');gh.appendChild(node('h3',{},'Learning goals'));button(gh,'+ Add goal',()=>{ep.objectives.push({id:slug('goal-'+(ep.objectives.length+1),doc.episodes.flatMap(x=>x.objectives.map(g=>g.id))),title:'New learning goal'});ep.quiz.reviewed=false;markDirty();render();});
+  ep.objectives.forEach((g,gi)=>{const rr=row(body,'goal-row');field(rr,'Goal '+(gi+1)+' · ID '+g.id,g.title,v=>{g.title=v;ep.quiz.reviewed=false});button(rr,'Remove',()=>{if(ep.objectives.length<=1)return announce('Each episode requires one learning goal','error');ep.objectives.splice(gi,1);ep.quiz.reviewed=false;markDirty();render();},'secondary small danger');});
+  const sh=row(body,'module-head');sh.appendChild(node('h3',{},'Slides and approved lectures'));button(sh,'+ Add slide',()=>{ep.slides.push({id:slug('slide-'+(ep.slides.length+1),doc.episodes.flatMap(x=>x.slides.map(s=>s.id))),title:'New slide',image:'slides/04-overview.png',lecture:'Enter the approved English lecture.'});ep.quiz.reviewed=false;markDirty();render();});
+  ep.slides.forEach((s,si)=>{const card=node('div',{class:'slide-card'});body.appendChild(card);const shr=row(card,'slide-head');shr.appendChild(node('h4',{},`Slide ${si+1} · ${s.id}`));const ctrl=row(shr);button(ctrl,'↑',()=>{if(si===0)return;[ep.slides[si-1],ep.slides[si]]=[ep.slides[si],ep.slides[si-1]];markDirty();render();});button(ctrl,'↓',()=>{if(si===ep.slides.length-1)return;[ep.slides[si+1],ep.slides[si]]=[ep.slides[si],ep.slides[si+1]];markDirty();render();});button(ctrl,'Remove',()=>{if(ep.slides.length<=1)return announce('An episode needs at least one slide','error');ep.slides.splice(si,1);ep.quiz.reviewed=false;markDirty();render();},'secondary small danger');
+   field(card,'Slide title',s.title,v=>s.title=v);const imgrow=row(card,'grid');const imagebox=node('div');imgrow.appendChild(imagebox);const image=node('img');image.src=s.image.startsWith('assets/')?API+'/media/'+encodeURIComponent(s.image.slice(7)):'./'+s.image;image.alt='Slide preview';imagebox.appendChild(image);imagebox.appendChild(node('div',{class:'tiny'},s.image));const upload=node('div');imgrow.appendChild(upload);const lab=node('label',{},'Upload replacement slide (PNG / JPG / WebP, maximum 5 MB)');lab.style.fontWeight='800';lab.style.fontSize='12px';upload.appendChild(lab);const file=node('input');file.type='file';file.accept='image/png,image/jpeg,image/webp';file.style.display='block';file.style.margin='10px 0';upload.appendChild(file);file.addEventListener('change',async()=>{const f=file.files?.[0];if(!f)return;if(f.size>5*1024*1024)return announce('Image larger than 5 MB','error');try{const result=await api('/admin/upload','POST',f,true,f.type);s.image=result.key;markDirty();image.src=API+'/media/'+encodeURIComponent(s.image.slice(7));announce('Slide uploaded to KV. Save the draft to associate it with this lesson.');}catch(e){announce(e.message,'error');}});
+   field(card,'Approved English lecture (full text)',s.lecture,v=>{s.lecture=v;ep.quiz.reviewed=false},'textarea',{lecture:true});
+  });
+  const qh=row(body,'module-head');qh.appendChild(node('h3',{},'Knowledge check · approved by instructor'));
+  button(qh,'AI: Suggest updated question',async()=>{
+    if(!confirm('Generate a proposed question using this episode’s lecture and goals? Existing question fields will be replaced, and author approval will be required.'))return;
+    try{announce('Generating a draft question for your review…');const res=await api('/admin/suggest','POST',{lesson_title:doc.title,episode:ep});ep.quiz=res.suggestion;markDirty();render();announce('AI suggestion loaded. Verify the question, choices, key and reason. Save draft, then approve and publish.','warning');}
+    catch(e){announce(e.message,'error');}
+  });
+  const quiz=node('div',{class:'quiz'});body.appendChild(quiz);
+  field(quiz,'Knowledge check question',ep.quiz.question,v=>{ep.quiz.question=v;ep.quiz.reviewed=false},'textarea');
+  for(const letter of 'ABCD')field(quiz,'Option '+letter,ep.quiz.choices[letter],v=>{ep.quiz.choices[letter]=v;ep.quiz.reviewed=false});
+  field(quiz,'Correct answer',ep.quiz.correct,v=>{ep.quiz.correct=v;ep.quiz.reviewed=false},'select',{options:['A','B','C','D']});
+  field(quiz,'Verified answer explanation (private until submission)',ep.quiz.reason,v=>{ep.quiz.reason=v;ep.quiz.reviewed=false},'textarea');
+  const approve=row(quiz,'approval');const check=node('input');check.type='checkbox';check.checked=ep.quiz.reviewed===true;check.addEventListener('change',()=>{ep.quiz.reviewed=check.checked;markDirty();});approve.append(check,node('span',{},'I reviewed and approve this question, all four choices, the correct key and explanation.'));
+ });
+ const fin=row(root,'module-head');fin.appendChild(node('h3',{},'Final practical scenario (optional)'));
+ if(!doc.final){button(fin,'+ Add Final scenario',()=>{doc.final={question:'Describe how the concepts in this lesson apply to a practical scenario.',rubric:[{id:'concept',title:'Key concept',criterion:'Explain the approved key concept correctly'},{id:'application',title:'Practical application',criterion:'Give a valid application of the concept'}],reviewed:false};markDirty();render();});
+  root.appendChild(node('p',{class:'tiny'},'No Final scenario: completing the Knowledge checks will complete this lesson.'));return;}
+ button(fin,'Remove Final scenario',()=>{if(!confirm('Remove Final scenario from this lesson?'))return;doc.final=null;markDirty();render();},'secondary small danger');
+ const fbox=node('div',{class:'quiz'});root.appendChild(fbox);field(fbox,'Final scenario question',doc.final.question,v=>{doc.final.question=v;doc.final.reviewed=false},'textarea',{rows:5});
+ const rh=row(fbox,'module-head');rh.appendChild(node('h3',{},'Grading criteria (private to the Worker)'));button(rh,'+ Add criterion',()=>{doc.final.rubric.push({id:slug('criterion-'+(doc.final.rubric.length+1),doc.final.rubric.map(x=>x.id)),title:'New criterion',criterion:'What the student must demonstrate'});doc.final.reviewed=false;markDirty();render();});
+ doc.final.rubric.forEach((r,i)=>{const box=node('div',{class:'slide-card'});fbox.appendChild(box);field(box,`Criterion ${i+1} · Stable ID: ${r.id}`,r.title,v=>{r.title=v;doc.final.reviewed=false});field(box,'What counts as demonstrated knowledge?',r.criterion,v=>{r.criterion=v;doc.final.reviewed=false},'textarea');button(box,'Remove criterion',()=>{if(doc.final.rubric.length<=2)return announce('Keep at least two final criteria','error');doc.final.rubric.splice(i,1);doc.final.reviewed=false;markDirty();render();},'secondary small danger');});
+ const approved=row(fbox,'approval'),fc=node('input');fc.type='checkbox';fc.checked=doc.final.reviewed===true;fc.addEventListener('change',()=>{doc.final.reviewed=fc.checked;markDirty();});approved.append(fc,node('span',{},'I reviewed and approve the Final scenario and all grading criteria.'));
+}
+async function save(){if(lock||!draft)return;lock=true;try{const result=await api('/admin/save','POST',{id:selected,content:draft.content,generation:draft.generation});draft=result.draft;changed=false;courseLessonNames[selected]={title:draft.content.title,module:draft.content.module||''};renderCourses();render();$('editionInfo').textContent=`Draft generation ${draft.generation} · base published version ${draft.baseVersion}`;const review=draft.content.episodes.some(x=>!x.quiz.reviewed)||!!(draft.content.final&&!draft.content.final.reviewed);announce(review?'Draft saved. A changed assessment now requires explicit approval: review the question, mark its approval checkbox, and save again.':'Draft saved. Ready for preview and publication.',review?'warning':'ok');}catch(e){announce(e.message,'error');}finally{lock=false;}}
+function preview(){if(!draft)return;const doc=draft.content,area=$('previewArea');area.hidden=false;area.replaceChildren();const block=node('div',{class:'preview'});let txt=`PREVIEW — DRAFT ONLY (not visible to students)\n${doc.title}\n${doc.module}\n\n${doc.description}\n`;
+ doc.episodes.forEach((e,i)=>{txt+=`\nEPISODE ${i+1}: ${e.title}\nGoals: ${e.objectives.map(g=>g.title).join(' · ')}\n`;for(const s of e.slides)txt+=`\nSLIDE: ${s.title} (${s.image})\n${s.lecture}\n`;txt+=`\nKNOWLEDGE CHECK: ${e.quiz.question}\n${'ABCD'.split('').map(k=>k+') '+e.quiz.choices[k]).join('\n')}\nAnswer (private): ${e.quiz.correct}\nReview status: ${e.quiz.reviewed?'Approved':'NEEDS REVIEW'}\n`;});
+ if(doc.final)txt+=`\nFINAL SCENARIO: ${doc.final.question}\n${doc.final.rubric.map(r=>r.title+': '+r.criterion).join('\n')}\nReview: ${doc.final.reviewed?'Approved':'NEEDS REVIEW'}`;else txt+='\nNo final scenario for this lesson.';block.textContent=txt;area.appendChild(block);area.scrollIntoView({behavior:'smooth'});announce('Preview opened. This draft is not published.');}
+async function publish(){if(lock||!draft)return;if(courseForLesson(selected))return announce('Publish course-linked lessons together using Publish reviewed course in the Courses section.','warning');if(changed)return announce('Save draft first. Publication never takes unreviewed unsaved browser changes.','warning');if(!confirm('Publish this reviewed edition to students? The previous published edition remains immutable for existing attempts.'))return;lock=true;try{const result=await api('/admin/publish','POST',{id:selected,content:draft.content,generation:draft.generation});announce(`${result.published.title} — edition v${result.published.version} PUBLISHED. Students see it on reload.`);await listLessons();await openLesson(selected);}catch(e){announce(e.message,'error');}finally{lock=false;}}
+$('loginForm').addEventListener('submit',async ev=>{ev.preventDefault();const v=$('authorCode').value.trim();if(!/^[\x20-\x7e]+$/.test(v))return announce('Use the configured ASCII author code','error');code=v;try{await listLessons();$('gate').hidden=true;$('manager').hidden=false;$('authorCode').value='';announce('Author authenticated. Select Open lesson when you want to edit a lesson. No changes have been published.');try{await listCourses();}catch(e){announce('Existing lessons loaded, but course management API is not available: '+e.message,'warning');}}catch(e){code='';announce(e.message,'error');}});
+
+async function publishCourse(){
+ if(lock||courseBusy)return;
+ const course=courses.find(c=>c.id===activeCourse);
+ if(!course||!course.lesson_ids?.length)return announce('Add a lesson to this course before publishing.','warning');
+ if(changed)return announce('First save the lesson currently being edited. Then publish the complete reviewed course.','warning');
+ if(!confirm(`Publish course “${course.title}” with ${course.lesson_ids.length} reviewed lesson(s) to students? This creates a new immutable published course edition. All saved lesson drafts must be approved.`))return;
+ courseBusy=true;$('publishCourseBtn').disabled=true;
+ try{
+  const result=await api('/admin/course-publish','POST',{course_id:course.id,generation:course.generation});
+  await listCourses();await listLessons();
+  if(selected&&course.lesson_ids.includes(selected))await openLesson(selected);
+  announce(`Course “${result.published.title}” edition v${result.published.version} published with ${result.published.lesson_count} lesson(s). Students can select it in the Student Workspace.`);
+ }catch(e){announce(e.message,'error');}
+ finally{courseBusy=false;$('publishCourseBtn').disabled=false;}
+}
+$('publishCourseBtn').addEventListener('click',publishCourse);
+$('newCourseBtn').addEventListener('click',()=>{$('courseCreateForm').hidden=false;$('courseTitle').focus();});
+$('courseCreateCancel').addEventListener('click',()=>{$('courseCreateForm').hidden=true;});
+$('courseCreateForm').addEventListener('submit',async ev=>{
+ ev.preventDefault();if(courseBusy)return;
+ const title=$('courseTitle').value.trim(),description=$('courseDescription').value.trim();
+ if(title.length<3)return announce('Course title must contain at least 3 characters','error');
+ courseBusy=true;$('courseCreateSubmit').disabled=true;
+ try{const res=await api('/admin/course-create','POST',{title,description});activeCourse=res.course.id;await listCourses();$('courseCreateForm').reset();$('courseCreateForm').hidden=true;announce(`Private course “${res.course.title}” created. No lesson or published content was changed.`);}
+ catch(e){announce(e.message,'error');}finally{courseBusy=false;$('courseCreateSubmit').disabled=false;}
+});
+$('courseSelect').addEventListener('change',ev=>{
+ if(changed&&!confirm('Discard unsaved lesson edits?')){ev.target.value=activeCourse;return;}
+ activeCourse=ev.target.value;$('courseLessonForm').hidden=true;
+ selected='';draft=null;changed=false;$('editor').hidden=true;$('previewArea').hidden=true;
+ renderCourses();renderStandaloneModule();
+});
+$('newCourseLessonBtn').addEventListener('click',()=>{$('courseLessonForm').hidden=false;$('courseLessonTitle').focus();});
+$('courseLessonCancel').addEventListener('click',()=>{$('courseLessonForm').hidden=true;});
+$('courseLessonForm').addEventListener('submit',async ev=>{
+ ev.preventDefault();if(courseBusy)return;if(changed&&!confirm('Discard unsaved lesson edits?'))return;
+ const course=courses.find(c=>c.id===activeCourse),title=$('courseLessonTitle').value.trim();
+ if(!course||title.length<3)return announce('Choose a course and enter a lesson title','error');
+ courseBusy=true;$('courseLessonSubmit').disabled=true;
+ try{
+  const result=await api('/admin/course-add-lesson','POST',{course_id:course.id,title,generation:course.generation});
+  selected=result.id;draft=result.draft;changed=false;
+  await listLessons();await listCourses();
+  $('courseLessonForm').reset();$('courseLessonForm').hidden=true;
+  $('editor').hidden=false;$('editionInfo').textContent=`New PRIVATE course lesson · draft generation ${draft.generation}`;
+  render();$('editor').scrollIntoView({behavior:'smooth',block:'start'});
+  announce(`Private lesson “${title}” added to “${course.title}”. It is not published.`);
+ }catch(e){announce(e.message,'error');}finally{courseBusy=false;$('courseLessonSubmit').disabled=false;}
+});
+$('lessonSelect').addEventListener('change',renderStandaloneModule);$('loadBtn').addEventListener('click',()=>{if(changed&&!confirm('Discard unsaved edits?'))return;openLesson($('lessonSelect').value).catch(e=>announce(e.message,'error'));});
+$('newBtn').addEventListener('click',async()=>{if(changed&&!confirm('Discard unsaved edits?'))return;try{const res=await api('/admin/create','POST',{});selected=res.id;draft=res.draft;changed=false;await listLessons();$('lessonSelect').value=selected;$('editor').hidden=false;$('editionInfo').textContent='New unpublished lesson · draft generation 1';render();announce('New lesson draft created. Replace placeholder texts and slide before publishing.');}catch(e){announce(e.message,'error');}});
+for(const id of ['saveBtn','saveBottom'])$(id).addEventListener('click',save);for(const id of ['previewBtn','previewBottom'])$(id).addEventListener('click',preview);for(const id of ['publishBtn','publishBottom'])$(id).addEventListener('click',publish);
+window.addEventListener('beforeunload',ev=>{if(changed){ev.preventDefault();ev.returnValue='Unsaved changes';}});
+</script></body></html>
